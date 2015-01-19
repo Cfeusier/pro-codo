@@ -11,7 +11,7 @@ var database = 'mongodb://localhost/procodo-dev';
 // }
 mongoose.connect(database);
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
+db.on('error', console.error.bind(console, 'mongo connection error:'));
 db.on('open', function() { console.log('mongo hooked'); });
 
 // middleware config
