@@ -6,12 +6,20 @@
   <link rel="stylesheet" type="text/css" href="styles/style.css" />
 </head>
 <body>
-  <h1>Procodo</h1>
+
   <div ng-controller="NavCtrl">
-    <div class='navigation' ng-if='isValid()'>
-      <ul>
-        <li><a href='#' class='logout' ng-click='logout()'>Logout</a></li>
-      </ul>
+    <div id="navigation">
+      <div class='invalid-navigation'>
+        <ul>
+          <li><a href='#/login' class='login'>login</a></li>
+          <li><a href='#/signup' class='login'>signup</a></li>
+        </ul>
+      </div>
+      <div class='valid-navigation' ng-if='isValid()'>
+        <ul>
+          <li><a href='#' class='logout' ng-click='logout()'>Logout</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 
