@@ -1,2 +1,2 @@
 // start app server
-require('./server/server.js').listen(8000);
+require('./server/server.js').listen(process.env.PORT || 8000);
