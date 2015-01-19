@@ -8,13 +8,14 @@ module.exports = {
     var password = req.body.password;
     var findUser = Q.nbind(User.findOne, User);
 
-    findUser({ username: username }).then(function (dev) {
-      if (!dev) {
+    findUser({ username: username }).then(function (user) {
+      if (!user) {
         next(new Error('User does not exist'));
       } else {
-        return dev.comparePasswords(password).then(function(foundUser) {
+        return user.comparePasswords(password).then(function(foundUser) {
           if (foundUser) {
-            var token = jwt.encode(dev, 'secret');
+            var token = jwt.encode(user, 'secret');
+            console.log(token)
             res.json({ token: token });
           } else {
             return next(new Error('No User'));
@@ -33,9 +34,9 @@ module.exports = {
     var newUser;
     var findOne = Q.nbind(User.findOne, User);
 
-    findOne({ username: username }).then(function(dev) {
-      if (dev) {
-        next(new Error('User already exist!'));
+    findOne({ username: username }).then(function(user) {
+      if (user) {
+        next(new Error('User already exists!'));
       } else {
         create = Q.nbind(User.create, User);
         newUser = {
@@ -44,8 +45,8 @@ module.exports = {
         };
         return create(newUser);
       }
-    }).then(function (dev) {
-      var token = jwt.encode(dev, 'secret');
+    }).then(function (user) {
+      var token = jwt.encode(user, 'monkeydonkeyeater');
       res.json({ token: token });
     }).fail(function (error) {
       next(error);
@@ -54,11 +55,10 @@ module.exports = {
 
   checkAuth: function (req, res, next) {
     var token = req.headers['x-access-token'];
-
     if (!token) {
       next(new Error('No token'));
     } else {
-      var dev = jwt.decode(token, 'secret');
+      var user = jwt.decode(token, 'monkeydonkeyeater');
       var findUser = Q.nbind(User.findOne, User);
       findUser({ username: user.username }).then(function (foundUser) {
         foundUser ? res.send(200) : res.send(401);
