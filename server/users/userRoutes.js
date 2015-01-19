@@ -4,5 +4,5 @@ module.exports = function (app) {
   // app === userRouter from middleware.js
   app.post('/login', userController.login);
   app.post('/signup', userController.signup);
-  app.get('/loggedin', userController.checkAuth);
+  app.get('/signedin', userController.checkAuth);
 };
