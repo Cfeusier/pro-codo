@@ -75,7 +75,14 @@ module.exports = {
       var user = jwt.decode(token, 'monkeydonkeyeater');
       var findUser = Q.nbind(User.findOne, User);
       findUser({ username: user.username }).then(function(foundUser) {
-        foundUser ? res.status(200).send({ user: foundUser }) : res.send(401);
+        var newUser = {
+          user: {
+            username: foundUser.username,
+            uType: foundUser.uType,
+            _id: foundUser._id
+          }
+        };
+        foundUser ? res.status(200).send(newUser) : res.send(401);
       }).fail(function (error) {
         next(error);
       });
