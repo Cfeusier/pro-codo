@@ -1,24 +1,21 @@
 angular.module('Procodo.landing', [])
 
-.controller('LandingCtrl', function ($scope, Users) {
-  $scope.data = {};
-  $scope.data.welcome = '... loading ...';
+.controller('LandingCtrl', function ($scope, $location, Users) {
+  $scope.welcome = '... loading ...';
 
-  $scope.getUser = function () {
-    Users.getUser().then(function(data) {
-      $scope.data.user = data.user;
-      console.log($scope.data.user)
-      if ($scope.data.user.uType == 1) {
-        $scope.data.welcome = 'Welcome Developer!';
-      } else if ($scope.data.user.uType === 2) {
-        $scope.data.welcome = 'Welcome Non-Profit!';
+  $scope.directUser = function () {
+    Users.getUser(function(user) {
+      var type = user.uType;
+      if (type == 1) {
+        $location.path('/devs/dashboard');
+      } else if (type == 2) {
+        $location.path('/nps/dashboard');
       } else {
-        $scope.data.welcome = "Welcome!";
+        $location.path('/login');
       }
     }).catch(function(err) {
       console.error(err);
     });
-
   };
 
   $scope.name = 'LandingCtrl';

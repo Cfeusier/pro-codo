@@ -69,8 +69,7 @@ module.exports = {
     }
   },
 
-  getUser: function (req, res, next) {
-    var token = req.headers['x-access-token'];
+  getUser: function (token, cb) {
     if (token) {
       var user = jwt.decode(token, 'monkeydonkeyeater');
       var findUser = Q.nbind(User.findOne, User);
@@ -82,10 +81,17 @@ module.exports = {
             _id: foundUser._id
           }
         };
-        foundUser ? res.status(200).send(newUser) : res.send(401);
+        foundUser ? cb(newUser) : cb(false);
       }).fail(function (error) {
         next(error);
       });
     }
+  },
+
+  dashboard: function(req, res, next) {
+    var token = req.headers['x-access-token'];
+    var user = module.exports.getUser(token, function(foundUser) {
+      foundUser ? res.send(foundUser) : next(new Error('No user found!'));
+    });
   }
 };
