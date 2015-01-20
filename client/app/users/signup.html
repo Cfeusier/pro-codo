@@ -1,15 +1,25 @@
 <div id="squeeze">
+  <h1>Procodo</h1>
+  <h3>Developers and Non-Profits, Connected</h3>
 
+  <div class="dev-cta">
+    Developers, come build your portfolio.
+  </div>
 
-
+  <div class="np-cta">
+    Non-Profits, get help changing the world.
+  </div>
 
   <div id='signup'>
-    <h1>Signup</h1>
+    <h3>Signup</h3>
     <form name="signupForm" ng-submit='signup()'>
-      <input type='text' ng-model='user.username'>
-      <input type="password" ng-model='user.password'>
+      <select ng-model='user.uType' ng-options='opt as opt.label for opt in uTypes'>
+      </select>
+      <input type='text' ng-model='user.username' placeholder='username'>
+      <input type="password" ng-model='user.password' placeholder='password'>
       <button>Signup</button>
     </form>
+    <br />
     <a href="#/login">Already a member? <strong>Login</strong></a>
   </div>
 </div>
