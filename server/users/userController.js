@@ -14,8 +14,7 @@ module.exports = {
       } else {
         return user.comparePasswords(password).then(function(foundUser) {
           if (foundUser) {
-            var token = jwt.encode(user, 'secret');
-            console.log(token)
+            var token = jwt.encode(user, 'monkeydonkeyeater');
             res.json({ token: token });
           } else {
             return next(new Error('No User'));
@@ -64,6 +63,19 @@ module.exports = {
       var findUser = Q.nbind(User.findOne, User);
       findUser({ username: user.username }).then(function (foundUser) {
         foundUser ? res.send(200) : res.send(401);
+      }).fail(function (error) {
+        next(error);
+      });
+    }
+  },
+
+  getUser: function (req, res, next) {
+    var token = req.headers['x-access-token'];
+    if (token) {
+      var user = jwt.decode(token, 'monkeydonkeyeater');
+      var findUser = Q.nbind(User.findOne, User);
+      findUser({ username: user.username }).then(function(foundUser) {
+        foundUser ? res.status(200).send({ user: foundUser }) : res.send(401);
       }).fail(function (error) {
         next(error);
       });

@@ -32,10 +32,20 @@ angular.module('Procodo.services', [])
     $location.path('/login');
   };
 
+  var getUser = function () {
+    return $http({
+      method: 'GET',
+      url: '/api/users/',
+    }).then(function(resp) {
+      return resp.data;
+    });
+  };
+
   return {
     login: login,
     signup: signup,
     isUser: isUser,
-    logout: logout
+    logout: logout,
+    getUser: getUser
   };
 });
