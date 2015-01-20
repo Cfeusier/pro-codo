@@ -1,10 +1,10 @@
 angular.module('Procodo.users', [])
 
-.controller('UsersCtrl', function ($scope, $window, $location, User) {
+.controller('UsersCtrl', function ($scope, $window, $location, Users) {
   $scope.user = {};
 
   $scope.login = function () {
-    User.login($scope.user)
+    Users.login($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('io.procodo', token);
         $location.path('/');
@@ -15,7 +15,7 @@ angular.module('Procodo.users', [])
   };
 
   $scope.signup = function () {
-    User.signup($scope.user)
+    Users.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('io.procodo', token);
         $location.path('/');

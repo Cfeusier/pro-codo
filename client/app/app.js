@@ -39,10 +39,10 @@ angular.module('Procodo', [
   };
   return tokenize;
 })
-.run(function ($rootScope, $location, User) {
+.run(function ($rootScope, $location, Users) {
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     if (next.$$route.originalPath !== '/login') {
-      if (next.$$route && !User.isUser()) {
+      if (next.$$route && !Users.isUser()) {
         $location.path('/signup');
       }
     }
