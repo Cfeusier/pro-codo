@@ -1,10 +1,10 @@
 angular.module('Procodo.nav', [])
-.controller('NavCtrl', function ($scope, User) {
+.controller('NavCtrl', function ($scope, Users) {
   $scope.isValid = function(){
-    return User.isUser();
+    return Users.isUser();
   };
   $scope.logout = function(){
-    User.logout();
+    Users.logout();
   };
   $scope.name = 'NavCtrl';
 });

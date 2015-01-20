@@ -3,6 +3,8 @@ angular.module('Procodo', [
   'Procodo.users',
   'Procodo.nav',
   'Procodo.landing',
+  'Procodo.devs',
+  'Procodo.nps',
   'ngRoute'
 ])
 .config(function($routeProvider, $httpProvider) {
@@ -14,6 +16,14 @@ angular.module('Procodo', [
     .when('/signup', {
       templateUrl: 'app/users/signup.html',
       controller: 'UsersCtrl'
+    })
+    .when('/devs/dashboard', {
+      templateUrl: 'app/devs/dashboard.html',
+      controller: 'DevsCtrl'
+    })
+    .when('/nps/dashboard', {
+      templateUrl: 'app/nps/dashboard.html',
+      controller: 'NpsCtrl'
     })
     .when('/', {
       templateUrl: 'app/landing/home.html',
@@ -39,10 +49,10 @@ angular.module('Procodo', [
   };
   return tokenize;
 })
-.run(function ($rootScope, $location, User) {
+.run(function ($rootScope, $location, Users) {
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     if (next.$$route.originalPath !== '/login') {
-      if (next.$$route && !User.isUser()) {
+      if (next.$$route && !Users.isUser()) {
         $location.path('/signup');
       }
     }

@@ -1,6 +1,6 @@
 angular.module('Procodo.services', [])
 
-.factory('User', function ($http, $location, $window) {
+.factory('Users', function ($http, $location, $window) {
   var login = function (user) {
     return $http({
       method: 'POST',
@@ -32,10 +32,20 @@ angular.module('Procodo.services', [])
     $location.path('/login');
   };
 
+  var getUser = function (cb) {
+    return $http({
+      method: 'GET',
+      url: '/api/users/',
+    }).then(function(resp) {
+      cb(resp.data.user);
+    });
+  };
+
   return {
     login: login,
     signup: signup,
     isUser: isUser,
-    logout: logout
+    logout: logout,
+    getUser: getUser
   };
 });
