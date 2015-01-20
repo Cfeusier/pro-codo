@@ -9,7 +9,7 @@
 
   <div ng-controller="NavCtrl">
     <div id="navigation">
-      <div class='invalid-navigation'>
+      <div class='invalid-navigation' ng-if='!isValid()'>
         <ul>
           <li><a href='#/login' class='login'>login</a></li>
           <li><a href='#/signup' class='login'>signup</a></li>

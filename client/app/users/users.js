@@ -25,4 +25,11 @@ angular.module('Procodo.users', [])
       });
   };
 
+  $scope.uTypes = [
+    { label: 'Developer/Engineer', value: 1 },
+    { label: 'Non-Profit Organization', value: 2 }
+  ];
+
+  $scope.user.uType = $scope.uTypes[0];
+
 });
