@@ -1,0 +1,10 @@
+<h1>Live Projects</h1>
+<div class="projects-index" ng-init="getProjects()">
+  <div class="project" ng-repeat="project in data.projects">
+    <div class="info">
+      <div class="title"><a href="#" ng-click="getProj(project._id)">{{ project.title }}</a>
+        <span>{{ project.requirements }}</span>
+      </div>
+    </div>
+  </div>
+</div>

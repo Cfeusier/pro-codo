@@ -78,7 +78,8 @@ module.exports = {
           user: {
             username: foundUser.username,
             uType: foundUser.uType,
-            _id: foundUser._id
+            _id: foundUser._id,
+            profileId: foundUser.profileId
           }
         };
         foundUser ? cb(newUser) : cb(false);

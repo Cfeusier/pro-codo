@@ -17,6 +17,14 @@ var UserSchema = new mongoose.Schema({
   uType: {
     type: Number,
     require: true
+  },
+  profileId: {
+    type: String,
+    default: ''
+  },
+  projects: {
+    type: Array,
+    default: []
   }
 });
 

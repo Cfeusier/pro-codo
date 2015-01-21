@@ -1,0 +1,8 @@
+<div class="new-profile" ng-init="getProfile()">
+  <form name="createProfileForm" ng-submit='makeProfile()'>
+    <input type='text' ng-model='np.profile.organizationName' placeholder='organization name'>
+    <input type='text' ng-model='np.profile.accountHolder' placeholder='account holder name'>
+    <button>Create your Profile</button>
+  </form>
+</div>
+<pre ng-model='np.profile'>{{ np.profile }}</pre>

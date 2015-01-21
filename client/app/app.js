@@ -2,6 +2,7 @@ angular.module('Procodo', [
   'Procodo.services',
   'Procodo.users',
   'Procodo.nav',
+  'Procodo.projects',
   'Procodo.landing',
   'Procodo.devs',
   'Procodo.nps',
@@ -24,6 +25,26 @@ angular.module('Procodo', [
     .when('/nps/dashboard', {
       templateUrl: 'app/nps/dashboard.html',
       controller: 'NpsCtrl'
+    })
+    .when('/devs/new', {
+      templateUrl: 'app/devs/new-profile.html',
+      controller: 'ProfilesCtrl'
+    })
+    .when('/nps/new', {
+      templateUrl: 'app/nps/new-profile.html',
+      controller: 'NpsProfilesCtrl'
+    })
+    .when('/projects/new', {
+      templateUrl: 'app/projects/new-project.html',
+      controller: 'ProjectsCtrl'
+    })
+    .when('/projects', {
+      templateUrl: 'app/projects/index.html',
+      controller: 'ProjectsCtrl'
+    })
+    .when('/project', {
+      templateUrl: 'app/projects/project.html',
+      controller: 'ProjectsCtrl'
     })
     .when('/', {
       templateUrl: 'app/landing/home.html',

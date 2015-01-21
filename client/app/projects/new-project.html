@@ -1,0 +1,8 @@
+<div class="new-project" ng-init="getProject()">
+  <form name="createProjectForm" ng-submit='createProject()'>
+    <input type='text' ng-model='project.title' placeholder='project title'>
+    <input type='text' ng-model='project.requirements' placeholder='project requirements'>
+    <button>Create a new Project</button>
+  </form>
+</div>
+<pre ng-model='project'>{{ project }}</pre>
