@@ -7,6 +7,7 @@ angular.module('Procodo.projects', [])
   $scope.np.profile = {};
   $scope.project = {};
   $scope.newProj = $scope.newProj || {};
+  $scope.user = {};
 
   $scope.getProjects = function () {
     Projects.getProjects().then(function (projects) {
@@ -42,6 +43,19 @@ angular.module('Procodo.projects', [])
     var id = $location.path().split("/")[2];
     Project.getProject(id, function (project) {
       $scope.project = project;
+      Nps.getProfile($scope.project.npId, function (profile) {
+        $scope.np.profile = profile;
+        Users.findUser($scope.project.npId).then(function (npName) {
+          $scope.np.organizationName = npName;
+        });
+      });
+    });
+  };
+
+  $scope.projectApply = function() {
+    Users.getUser(function (user) {
+      $scope.user = user;
+      console.log(user.username + " applying for project: " + $scope.project.title);
     });
   };
 

@@ -1,4 +1,5 @@
 <div id="project-view" ng-init="getProject()">
-  <h1>Project View</h1>
+  <h1>{{ project.title }} <span style="font-size: 10pt; color: gray;">{{ np.organizationName }}</span></h1>
   <pre>{{ project }}</pre>
+  <button ng-click="projectApply()">Apply for this Project!</button>
 </div>
