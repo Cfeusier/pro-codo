@@ -36,7 +36,7 @@ angular.module('Procodo.services', [])
     $window.localStorage.removeItem('io.procodo.user');
     $window.localStorage.removeItem('io.procodo.dev.profileId');
     $window.localStorage.removeItem('io.procodo.profileSet');
-    $location.path('/login');
+    $location.path('/');
   };
 
   var getUser = function (cb) {

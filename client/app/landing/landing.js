@@ -6,16 +6,15 @@ angular.module('Procodo.landing', [])
   $scope.directUser = function () {
     var type;
     var userId = $window.localStorage.getItem('io.procodo.userId');
-    // var userId = null;
     if (userId) {
-      // type = $window.localStorage.getItem('io.procodo.uType');
-      // if (type == 1) {
-      //   $location.path('/devs/dashboard');
-      // } else if (type == 2) {
-      //   $location.path('/nps/dashboard');
-      // } else {
-      //   $location.path('/login');
-      // }
+      type = $window.localStorage.getItem('io.procodo.uType');
+      if (type == 1) {
+        $location.path('/devs/dashboard');
+      } else if (type == 2) {
+        $location.path('/nps/dashboard');
+      } else {
+        $location.path('/login');
+      }
     } else {
       Users.getUser(function(user) {
         type = user.uType;

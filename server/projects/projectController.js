@@ -48,7 +48,7 @@ module.exports = {
   sendProject: function (req, res, next) {
     var projectId = req.params.id;
     var findProj = Q.nbind(Project.findOne, Project);
-
+    console.log(projectId);
     findProj({ _id: projectId }).then(function (proj) {
       res.send(proj);
     });
