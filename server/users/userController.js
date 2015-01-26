@@ -94,5 +94,19 @@ module.exports = {
     var user = module.exports.getUser(token, function(foundUser) {
       foundUser ? res.send(foundUser) : next(new Error('No user found!'));
     });
+  },
+
+  findUser: function(req, res, next, id) {
+    var findUser = Q.nbind(User.findOne, User);
+    findUser({ _id: id }).then(function (user) {
+      req.queriedUsername =  user.username;
+      next();
+    }).fail(function (error) {
+      next(new Error("No user found!"));
+    });
+  },
+
+  sendUser: function(req, res, next) {
+    res.send(req.queriedUsername);
   }
 };
