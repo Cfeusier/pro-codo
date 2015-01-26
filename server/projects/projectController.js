@@ -33,27 +33,27 @@ module.exports = {
       }
     }).then(function (newProject) {
       var findUser = Q.nbind(Profile.findOne, Profile);
-
       findUser({ userId: npId }).then(function (profile) {
         profile.projects.push(newProject);
         profile.save();
       });
-
       res.send(newProject);
     }).fail(function (err) {
       console.error(err);
     });
   },
 
-  sendProject: function (req, res, next) {
-    var projectId = req.params.id;
+  getProject: function(req, res, next, projectId) {
     var findProj = Q.nbind(Project.findOne, Project);
-    console.log(projectId);
     findProj({ _id: projectId }).then(function (proj) {
-      res.send(proj);
+      req.project = proj;
+      next();
     });
+  },
 
-
+  sendProject: function (req, res, next) {
+    var proj = req.project;
+    proj ? res.send(proj) : res.status(404).send();
   }
 
 };
