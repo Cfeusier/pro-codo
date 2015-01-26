@@ -19,7 +19,7 @@ angular.module('Procodo.projects', [])
     $scope.np.profile.userId = $window.localStorage.getItem('io.procodo.userId');
   };
 
-  $scope.getProject = function () {
+  $scope.setProjectUser = function () {
     Users.getUser(function (user) {
       $scope.np.account = user;
       $window.localStorage.setItem('io.procodo.user', JSON.stringify(user));
@@ -38,12 +38,12 @@ angular.module('Procodo.projects', [])
     });
   };
 
-  $scope.getProj = function(id) {
+  $scope.getProject = function() {
+    var id = $location.path().split("/")[2];
     Project.getProject(id, function (project) {
-      $scope.newProj = project;
-      $location.path('/projects')
+      $scope.project = project;
     });
-  }
+  };
 
   $scope.name = 'ProjectsCtrl';
-})
+});

@@ -178,12 +178,13 @@ angular.module('Procodo.services', [])
       url: '/api/projects/' + projId,
     }).then(function (resp) {
       cb(resp.data);
+    }).catch(function(err) {
+      console.log(err);
+      $location.path('/not-found');
     });
   };
 
-  return {
-    getProject: getProject
-  }
+  return { getProject: getProject };
 });
 
 

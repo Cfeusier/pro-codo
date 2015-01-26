@@ -42,16 +42,20 @@ angular.module('Procodo', [
       templateUrl: 'app/projects/index.html',
       controller: 'ProjectsCtrl'
     })
-    .when('/project', {
+    .when('/projects/:projId', {
       templateUrl: 'app/projects/project.html',
       controller: 'ProjectsCtrl'
+    })
+    .when('/not-found', {
+      templateUrl: 'app/landing/not-found.html',
+      controller: 'LandingCtrl'
     })
     .when('/', {
       templateUrl: 'app/landing/home.html',
       controller: 'LandingCtrl'
     })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/not-found'
     });
 
   $httpProvider.interceptors.push('Tokenize');

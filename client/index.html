@@ -11,11 +11,13 @@
     <div id="navigation">
       <div class='invalid-navigation' ng-if='!isValid()'>
         <ul>
+          <li><a href='#/' class='home'>home</a></li>
           <li><a href='#/login' class='login'>login</a></li>
         </ul>
       </div>
       <div class='valid-navigation' ng-if='isValid()'>
         <ul>
+          <li><a href='#/' class='home'>home</a></li>
           <li><a href='#' class='logout' ng-click='logout()'>logout</a></li>
           <li><a href='#/projects' class='projects'>projects</a></li>
         </ul>

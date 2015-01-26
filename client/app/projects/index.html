@@ -2,7 +2,7 @@
 <div class="projects-index" ng-init="getProjects()">
   <div class="project" ng-repeat="project in data.projects">
     <div class="info">
-      <div class="title"><a href="#" ng-click="getProj(project._id)">{{ project.title }}</a>
+      <div class="title"><a href="#/projects/{{project._id}}">{{ project.title }}</a>
         <span>{{ project.requirements }}</span>
       </div>
     </div>
