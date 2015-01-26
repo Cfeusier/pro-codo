@@ -51,11 +51,20 @@ angular.module('Procodo.services', [])
     } else {
       return $http({
         method: 'GET',
-        url: '/api/users/',
+        url: '/api/users/'
       }).then(function(resp) {
         cb(resp.data.user);
       });
     }
+  };
+
+  var findUser = function (id) {
+    return $http({
+      method: 'GET',
+      url: '/api/users/' + id
+    }).then(function(resp) {
+      return resp.data;
+    });
   };
 
   return {
@@ -63,7 +72,8 @@ angular.module('Procodo.services', [])
     signup: signup,
     isUser: isUser,
     logout: logout,
-    getUser: getUser
+    getUser: getUser,
+    findUser: findUser
   };
 })
 
