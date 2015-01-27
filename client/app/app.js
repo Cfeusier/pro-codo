@@ -1,4 +1,5 @@
 angular.module('Procodo', [
+  'Procodo.lsKeysServices',
   'Procodo.userServices',
   'Procodo.devServices',
   'Procodo.npServices',
