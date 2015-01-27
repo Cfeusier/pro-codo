@@ -3,16 +3,19 @@ var bodyParser = require('body-parser');
 var helpers = require('./helpers.js');
 
 module.exports = function (app, express) {
+  // routers
   var userRouter = express.Router();
   var devProfileRouter = express.Router();
   var npProfileRouter = express.Router();
   var projectsRouter = express.Router();
 
+  // general config
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
   app.use(express.static(__dirname + '/../../client'));
 
+  // register routers
   app.use('/api/users', userRouter);
   app.use('/api/devs/profiles', devProfileRouter);
   app.use('/api/nps/profiles', npProfileRouter);
