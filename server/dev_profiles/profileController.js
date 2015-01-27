@@ -36,27 +36,11 @@ module.exports = {
     var created;
 
     findProfile({ _id: devId }).then(function (devProfile) {
-      if (devProfile.applied.indexOf(projectId) === -1) {
-        devProfile.applied.push(projectId);
-        devProfile.save();
-      } else {
-        created = true;
-      }
+      module.exports.handleDevApplication(created, devProfile, projectId);
       findProject({ _id: projectId }).then(function (project) {
-        if (created) {
-          res.status(200).send(project);
-        } else {
-          project.applicants.push(devId);
-          project.save(function(err) {
-            err ? res.status(500).send(err) : res.status(200).send(project);
-          });
-        }
-      }).fail(function (err) {
-        res.status(500).send(err);
-      });
-    }).fail(function (err) {
-      res.status(500).send(err);
-    });
+        module.exports.handleProjectApplication(created, res, project, devId);
+      }).fail(function (err) { res.status(500).send(err); });
+    }).fail(function (err) { res.status(500).send(err); });
   },
 
   getProfile: function (req, res, next, id) {
@@ -69,29 +53,11 @@ module.exports = {
           if (!user) {
             next(new Error('User does not exist'));
           } else {
-            req.user = user;
-            var saveUser = Q.bind(user.save, user);
-            saveUser().then(function (updatedUser) {
-              req.user = {
-                user: {
-                  username: updatedUser.username,
-                  uType: updatedUser.uType,
-                  _id: updatedUser._id,
-                  profileId: updatedUser.profileId
-                }
-              };
-              next();
-            }).fail(function (err) {
-              next(err);
-            });
+            module.exports.updateUserProfile(req, user, next);
           }
-        }).fail(function (err) {
-          console.error(err);
-        });
+        }).fail(function (err) { console.error(err); });
       }
-    }).fail(function (err) {
-      console.error(err);
-    });
+    }).fail(function (err) { console.error(err); });
   },
 
   newProfile: function (req, res, next, userId) {
@@ -105,29 +71,50 @@ module.exports = {
           if (profile) {
             req.profile = profile[0];
             user.profileId = profile[0]._id;
-            var saveUser = Q.bind(user.save, user);
-            saveUser().then(function (updatedUser) {
-              req.user = {
-                user: {
-                  username: updatedUser.username,
-                  uType: updatedUser.uType,
-                  _id: updatedUser._id,
-                  profileId: updatedUser.profileId
-                }
-              };
-              next();
-            }).fail(function (err) {
-              next(err);
-            });
+            module.exports.updateUserProfile(req, user, next);
           }
-        }).fail(function (err) {
-          next(err);
-        });
+        }).fail(function (err) { next(err); });
       }
-    }).fail(function (error) {
-      next(error);
-    });
+    }).fail(function (err) { next(err); });
+  },
+
+  cleanUser: function (updatedUser) {
+    return {
+      user: {
+        username: updatedUser.username,
+        uType: updatedUser.uType,
+        _id: updatedUser._id,
+        profileId: updatedUser.profileId
+      }
+    };
+  },
+
+  handleDevApplication: function (created, devProfile, projectId) {
+    if (devProfile.applied.indexOf(projectId) === -1) {
+      devProfile.applied.push(projectId);
+      devProfile.save();
+    } else {
+      created = true;
+    }
+  },
+
+  handleProjectApplication: function (created, res, project, devId) {
+    if (created) {
+      res.status(200).send(project);
+    } else {
+      project.applicants.push(devId);
+      project.save(function(err) {
+        err ? res.status(500).send(err) : res.status(200).send(project);
+      });
+    }
+  },
+
+  updateUserProfile: function (req, user, next) {
+    var saveUser = Q.bind(user.save, user);
+    saveUser().then(function (updatedUser) {
+      req.user = module.exports.cleanUser(updatedUser);
+      next();
+    }).fail(function (err) { next(err); });
   }
 
 };
-
