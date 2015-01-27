@@ -36,7 +36,8 @@ angular.module('Procodo.lsKeysServices', [])
     removeAllKeys: removeAllKeys,
     lsGet: lsGet,
     lsSetUser: lsSetUser,
-    lsUnSet: unset
+    lsUnSet: unset,
+    lsSet: lsSet
   };
 
 });
