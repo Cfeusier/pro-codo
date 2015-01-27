@@ -1,6 +1,7 @@
 angular.module('Procodo.devServices', [])
 
-.factory('Devs', function ($http, $location, $window) {
+.factory('Devs', function ($http, $location, $window, LsKeys) {
+
   var getProfile = function (userId, cb) {
     return $http({
       method: 'GET',
@@ -13,9 +14,11 @@ angular.module('Procodo.devServices', [])
       method: 'GET',
       url: '/api/devs/profiles/new/' + devId
     }).then(function(resp) {
-      $window.localStorage.setItem('io.procodo.dev.profileId', resp.data.profile[0]._id);
-      $window.localStorage.setItem('io.procodo.profileId', resp.data.profile[0]._id);
-      cb(resp.data.profile[0]);
+      var devProfile = resp.data.profile[0];
+      var devProfileId = devProfile._id;
+      LsKeys.lsSet('io.procodo.dev.profileId', devProfileId);
+      LsKeys.lsSet('io.procodo.profileId', devProfileId);
+      cb(devProfile);
       $location.path('/devs/new');
     })
   };

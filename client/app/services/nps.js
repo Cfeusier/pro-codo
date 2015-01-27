@@ -1,6 +1,7 @@
 angular.module('Procodo.npServices', [])
 
-.factory('Nps', function ($http, $location, $window) {
+.factory('Nps', function ($http, $location, $window, LsKeys) {
+
   var getProfile = function (userId, cb) {
     return $http({
       method: 'GET',
@@ -13,11 +14,13 @@ angular.module('Procodo.npServices', [])
       method: 'GET',
       url: '/api/nps/profiles/new/' + npId
     }).then(function(resp) {
-      $window.localStorage.setItem('io.procodo.np.profileId', resp.data.profile[0]._id);
-      $window.localStorage.setItem('io.procodo.profileId', resp.data.profile[0]._id);
-      cb(resp.data.profile[0]);
+      var npProfile = resp.data.profile[0];
+      var npProfileId = npProfile._id;
+      LsKeys.lsSet('io.procodo.np.profileId', npProfileId);
+      LsKeys.lsSet('io.procodo.profileId', npProfileId);
+      cb(npProfile);
       $location.path('/nps/new');
-    })
+    });
   };
 
   var makeProfile = function (profile, cb) {
@@ -25,7 +28,7 @@ angular.module('Procodo.npServices', [])
       method: 'POST',
       url: '/api/nps/profiles',
       data: profile
-    }).then(function (resp) { cb(resp.data); })
+    }).then(function (resp) { cb(resp.data); });
   };
 
   return {
