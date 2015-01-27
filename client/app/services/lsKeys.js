@@ -20,6 +20,10 @@ angular.module('Procodo.lsKeysServices', [])
     return $window.localStorage.getItem(key);
   };
 
+  var lsSet = function (key, value) {
+    $window.localStorage.setItem(key, value);
+  };
+
   var lsSetUser = function () {
     return {
       username: lsGet('io.procodo.username'),
