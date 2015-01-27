@@ -1,12 +1,13 @@
 angular.module('Procodo.projects', [])
 
-.controller('ProjectsCtrl', function ($scope, $window, Projects, Users, Nps, $location, Project) {
+.controller('ProjectsCtrl', function ($scope, $window, Projects, Users, Nps, $location, Project, Devs) {
   $scope.data = {};
   $scope.np = {};
   $scope.np.account = {};
   $scope.np.profile = {};
   $scope.project = {};
   $scope.newProj = $scope.newProj || {};
+  $scope.user = {};
 
   $scope.getProjects = function () {
     Projects.getProjects().then(function (projects) {
@@ -42,6 +43,29 @@ angular.module('Procodo.projects', [])
     var id = $location.path().split("/")[2];
     Project.getProject(id, function (project) {
       $scope.project = project;
+      Nps.getProfile($scope.project.npId, function (profile) {
+        $scope.np.profile = profile;
+        Users.findUser($scope.project.npId).then(function (npName) {
+          $scope.np.organizationName = npName;
+        });
+      });
+    });
+  };
+
+  $scope.projectApply = function() {
+    Users.getUser(function (user) {
+      $scope.user = user;
+      if (user.uType == 1) {
+        Devs.getProfile(user._id, function (profile) {
+          if (!!profile.currentProject) {
+            alert('You can only have one active project at a time!');
+          } else {
+            Devs.applyForProject(profile._id, $scope.project._id);
+          }
+        });
+      } else if (user.uType == 2) {
+        alert('Only users with a Developer account can apply for projects!');
+      }
     });
   };
 

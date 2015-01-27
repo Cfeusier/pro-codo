@@ -1,5 +1,6 @@
 var Profile = require('./profileModel.js');
 var User = require('../users/userModel.js');
+var Project = require('../projects/projectModel.js');
 var Q = require('q');
 
 module.exports = {
@@ -99,6 +100,38 @@ module.exports = {
 
   sendEmptyProfile: function (req, res, next) {
     res.json({ profile: req.profile, user: req.user });
+  },
+
+  applyForProject: function (req, res, next) {
+    var findProfile = Q.nbind(Profile.findOne, Profile);
+    var findProject = Q.nbind(Project.findOne, Project);
+    var devId = req.body.devProfileId;
+    var projectId = req.body.projectId;
+    var created;
+
+    findProfile({ _id: devId }).then(function (devProfile) {
+      if (devProfile.applied.indexOf(projectId) === -1) {
+        devProfile.applied.push(projectId);
+        devProfile.save();
+      } else {
+        created = true;
+      }
+      findProject({ _id: projectId }).then(function (project) {
+        if (created) {
+          res.status(200).send(project);
+        } else {
+          project.applicants.push(devId);
+          project.save(function(err) {
+            err ? res.status(500).send(err) : res.status(200).send(project);
+          });
+        }
+      }).fail(function (err) {
+        res.status(500).send(err);
+      });
+    }).fail(function (err) {
+      res.status(500).send(err);
+    });
   }
 
 };
+

@@ -19,6 +19,18 @@ var DevProfileSchema = new mongoose.Schema({
   expertise: {
     type: String,
     default: ''
+  },
+  applied: {
+    type: [],
+    default: []
+  },
+  pastProjects: {
+    type: [],
+    default: []
+  },
+  currentProject: {
+    type: String,
+    default: ''
   }
 });
 

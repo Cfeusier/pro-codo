@@ -1,7 +1,7 @@
 angular.module('Procodo.landing', [])
 
 .controller('LandingCtrl', function ($scope, $location, $window, Users) {
-  $scope.welcome = '... loading ...';
+  $scope.welcome = '... Making sure everything is perfect for you -- hang tight ...';
   $scope.errorMessage = 'not found, yo';
 
   $scope.directUser = function () {

@@ -2,10 +2,16 @@
   <h2>Dashboard for {{ dev.account.username }}</h2>
   <a href="#/devs/new" ng-if="!hasProfile()">Create your Profile</a>
   <div class="profile" ng-if="hasProfile()">
-    <a href="#/projects">Search for Open Projects</a>
     <h3>Name: {{ dev.profile.firstName + ' ' + dev.profile.lastName }}</h3>
     <h4>Expertise: <span style='font-size: 10pt;'>{{ dev.profile.expertise }}</span></h4>
     <a href="api/devs/profiles/{{ dev.account._id }}">Edit your Profile</a>
+    <div class="currentProject" ng-if="!hasProject()">
+      <!-- CHANGE THE ng-if back after testing! -->
+      <h1>CURRENT PROJECT STUFF</h1>
+    </div>
+    <br />
+    <a href="#/projects" ng-if="hasProject()">Search for Open Projects</a>
+    <!-- CHANGE THE ng-if back after testing! -->
   </div>
 
 

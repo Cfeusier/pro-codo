@@ -1,4 +1,9 @@
 <div id="project-view" ng-init="getProject()">
-  <h1>Project View</h1>
+  <h1>{{ project.title }} <span style="font-size: 10pt; color: gray;">{{ np.organizationName }}</span></h1>
+  <h3>Required skills: <span style="font-size: 12pt;">{{ project.requirements }}</span></h3>
+  <h4>Project Length: {{ project.weeks }}</h4>
+  <h4>Workload per Week: {{ project.hrsWeek }}</h4>
+  <button ng-click="projectApply()">Apply for this Project!</button>
+
   <pre>{{ project }}</pre>
 </div>

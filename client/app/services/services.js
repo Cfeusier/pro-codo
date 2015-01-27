@@ -51,11 +51,20 @@ angular.module('Procodo.services', [])
     } else {
       return $http({
         method: 'GET',
-        url: '/api/users/',
+        url: '/api/users'
       }).then(function(resp) {
         cb(resp.data.user);
       });
     }
+  };
+
+  var findUser = function (id) {
+    return $http({
+      method: 'GET',
+      url: '/api/users/' + id
+    }).then(function(resp) {
+      return resp.data;
+    });
   };
 
   return {
@@ -63,7 +72,8 @@ angular.module('Procodo.services', [])
     signup: signup,
     isUser: isUser,
     logout: logout,
-    getUser: getUser
+    getUser: getUser,
+    findUser: findUser
   };
 })
 
@@ -92,17 +102,29 @@ angular.module('Procodo.services', [])
   var createProfile = function (profile, cb) {
     return $http({
       method: 'POST',
-      url: '/api/devs/profiles/',
+      url: '/api/devs/profiles',
       data: profile
     }).then(function (resp) {
       cb(resp.data);
     })
   };
 
+  var applyForProject = function (devProfileId, projectId) {
+    var data = { devProfileId: devProfileId, projectId: projectId };
+    return $http({
+      method: 'POST',
+      url: '/api/devs/profiles/apply',
+      data: data
+    }).then(function (resp) {
+      console.log(resp); // TODO: DO SOMETHING WITH RESPONSE FROM APPLICATION
+    });
+  };
+
   return {
     getProfile: getProfile,
     newProfile: newProfile,
-    createProfile: createProfile
+    createProfile: createProfile,
+    applyForProject: applyForProject
   };
 })
 
@@ -131,7 +153,7 @@ angular.module('Procodo.services', [])
   var makeProfile = function (profile, cb) {
     return $http({
       method: 'POST',
-      url: '/api/nps/profiles/',
+      url: '/api/nps/profiles',
       data: profile
     }).then(function (resp) {
       cb(resp.data);
@@ -149,7 +171,7 @@ angular.module('Procodo.services', [])
   var getProjects = function () {
     return $http({
       method: 'GET',
-      url: '/api/projects/'
+      url: '/api/projects'
     }).then(function (resp) {
       return resp.data;
     })
@@ -158,7 +180,7 @@ angular.module('Procodo.services', [])
   var createProject = function (project, cb) {
     return $http({
       method: 'POST',
-      url: '/api/projects/',
+      url: '/api/projects',
       data: project
     }).then(function (resp) {
       cb(resp.data);
@@ -186,5 +208,3 @@ angular.module('Procodo.services', [])
 
   return { getProject: getProject };
 });
-
-
