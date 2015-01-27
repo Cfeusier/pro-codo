@@ -15,9 +15,8 @@ angular.module('Procodo.npServices', [])
       url: '/api/nps/profiles/new/' + npId
     }).then(function(resp) {
       var npProfile = resp.data.profile[0];
-      var npProfileId = npProfile._id;
-      LsKeys.lsSet('io.procodo.np.profileId', npProfileId);
-      LsKeys.lsSet('io.procodo.profileId', npProfileId);
+      LsKeys.lsSet('io.procodo.np.profileId', npProfile._id);
+      LsKeys.lsSet('io.procodo.profileId', npProfile._id);
       cb(npProfile);
       $location.path('/nps/new');
     });

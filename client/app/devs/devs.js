@@ -1,6 +1,7 @@
 angular.module('Procodo.devs', [])
 
-.controller('DevsCtrl', function ($scope, $window, Users, Devs) {
+.controller('DevsCtrl', function ($scope, $window, Users, Devs, LsKeys) {
+
   $scope.dev = {};
   $scope.dev.account = {};
   $scope.dev.profile = $scope.dev.profile || {};
@@ -8,18 +9,18 @@ angular.module('Procodo.devs', [])
   $scope.getUser = function() {
     Users.getUser(function (user) {
       $scope.dev.account = user;
-      $window.localStorage.setItem('io.procodo.user', JSON.stringify(user));
+      LsKeys.lsSet('io.procodo.user', JSON.stringify(user));
       $scope.getProfile();
       Devs.getProfile($scope.dev.account._id, function (profile) {
         $scope.dev.profile = profile;
-        $window.localStorage.setItem('io.procodo.profileId', profile._id);
+        LsKeys.lsSet('io.procodo.profileId', profile._id);
       });
     });
   };
 
   $scope.getProfile = function() {
-    $scope.dev.account = JSON.parse($window.localStorage.getItem('io.procodo.user'));
-    $scope.dev.profile.userId = $window.localStorage.getItem('io.procodo.userId');
+    $scope.dev.account = JSON.parse(LsKeys.lsGet('io.procodo.user'));
+    $scope.dev.profile.userId = LsKeys.lsGet('io.procodo.userId');
   };
 
   $scope.hasProfile = function () {
@@ -33,15 +34,16 @@ angular.module('Procodo.devs', [])
   $scope.name = 'DevsCtrl';
 })
 
-.controller('ProfilesCtrl', function ($scope, $window, $location, Users, Devs) {
+.controller('ProfilesCtrl', function ($scope, $window, $location, Users, Devs, LsKeys) {
+
   $scope.dev = {};
   $scope.dev.account = {};
   $scope.dev.profile = {};
 
   $scope.getProfile = function() {
-    $scope.dev.account = JSON.parse($window.localStorage.getItem('io.procodo.user'));
-    $scope.dev.profile._id = $window.localStorage.getItem('io.procodo.profileId');
-    $scope.dev.profile.userId = $window.localStorage.getItem('io.procodo.userId');
+    $scope.dev.account = JSON.parse(LsKeys.lsGet('io.procodo.user'));
+    $scope.dev.profile._id = LsKeys.lsGet('io.procodo.profileId');
+    $scope.dev.profile.userId = LsKeys.lsGet('io.procodo.userId');
   };
 
   $scope.createProfile = function () {

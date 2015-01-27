@@ -1,28 +1,21 @@
 angular.module('Procodo.users', [])
 
-.controller('UsersCtrl', function ($scope, $window, $location, Users) {
+.controller('UsersCtrl', function ($scope, $window, $location, Users, LsKeys) {
+
   $scope.user = {};
 
   $scope.login = function () {
-    Users.login($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('io.procodo', token);
-        $location.path('/');
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    Users.login($scope.user).then(function (token) {
+      LsKeys.lsSet('io.procodo', token);
+      $location.path('/');
+    }).catch(function (error) { console.error(error); });
   };
 
   $scope.signup = function () {
-    Users.signup($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('io.procodo', token);
-        $location.path('/');
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    Users.signup($scope.user).then(function (token) {
+      LsKeys.lsSet('io.procodo', token);
+      $location.path('/');
+    }).catch(function (error) { console.error(error); });
   };
 
   $scope.uTypes = [
