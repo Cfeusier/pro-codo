@@ -1,6 +1,7 @@
 angular.module('Procodo.projectsServices', [])
 
 .factory('Projects', function ($http, $location, $window) {
+
   var getProjects = function () {
     return $http({
       method: 'GET',
