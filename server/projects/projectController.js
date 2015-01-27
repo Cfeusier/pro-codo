@@ -17,16 +17,18 @@ module.exports = {
   create: function (req, res, next) {
     var projectTitle = req.body.title;
     var requirements = req.body.requirements;
+    var weeks = req.body.weeks;
+    var hrsWeek = req.body.hrsWeek;
     var npId = req.body.npId;
-
     var findOne = Q.nbind(Project.findOne, Project);
-
     findOne({ _id: npId }).then(function (err, project) {
       if (!project) {
         var createProject = Q.nbind(Project.create, Project);
         var newProj = {
           title: projectTitle,
           requirements: requirements,
+          weeks: weeks,
+          hrsWeek: hrsWeek,
           npId: npId
         };
         return createProject(newProj);
@@ -35,12 +37,11 @@ module.exports = {
       var findUser = Q.nbind(Profile.findOne, Profile);
       findUser({ userId: npId }).then(function (profile) {
         profile.projects.push(newProject);
-        profile.save();
+        profile.save(function (err) {
+          err ? res.status(500).send() : res.send(newProject);
+        });
       });
-      res.send(newProject);
-    }).fail(function (err) {
-      console.error(err);
-    });
+    }).fail(function (err) { console.error(err); });
   },
 
   getProject: function(req, res, next, projectId) {
