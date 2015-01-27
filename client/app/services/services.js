@@ -116,7 +116,7 @@ angular.module('Procodo.services', [])
       url: '/api/devs/profiles/apply',
       data: data
     }).then(function (resp) {
-      console.log(resp);
+      console.log(resp); // TODO: DO SOMETHING WITH RESPONSE FROM APPLICATION
     });
   };
 
