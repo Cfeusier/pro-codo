@@ -17,9 +17,7 @@ module.exports = {
         profile.expertise = expertise;
         saveProfile().then(function (newProfile) {
           res.send(newProfile[0]);
-        }).fail(function (err) {
-          console.error(err);
-        });
+        }).fail(function (err) { console.error(err); });
       }
     })
   },
