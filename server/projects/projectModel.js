@@ -18,6 +18,14 @@ var ProjectSchema = new mongoose.Schema({
   applicants: {
     type: [],
     default: []
+  },
+  weeks: {
+    type: Number,
+    default: 4
+  },
+  hrsWeek: {
+    type: Number,
+    default: 10
   }
 });
 
