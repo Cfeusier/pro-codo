@@ -26,6 +26,10 @@ angular.module('Procodo.devs', [])
     return !!$scope.dev.profile.expertise;
   };
 
+  $scope.hasProject = function () {
+    return !!$scope.dev.profile.currentProject;
+  };
+
   $scope.name = 'DevsCtrl';
 })
 

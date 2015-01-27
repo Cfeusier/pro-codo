@@ -14,6 +14,10 @@ var ProjectSchema = new mongoose.Schema({
   requirements: {
     type: String,
     default: ''
+  },
+  applicants: {
+    type: [],
+    default: []
   }
 });
 

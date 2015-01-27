@@ -1,6 +1,6 @@
 angular.module('Procodo.projects', [])
 
-.controller('ProjectsCtrl', function ($scope, $window, Projects, Users, Nps, $location, Project) {
+.controller('ProjectsCtrl', function ($scope, $window, Projects, Users, Nps, $location, Project, Devs) {
   $scope.data = {};
   $scope.np = {};
   $scope.np.account = {};
@@ -55,7 +55,17 @@ angular.module('Procodo.projects', [])
   $scope.projectApply = function() {
     Users.getUser(function (user) {
       $scope.user = user;
-      console.log(user.username + " applying for project: " + $scope.project.title);
+      if (user.uType == 1) {
+        Devs.getProfile(user._id, function (profile) {
+          if (!!profile.currentProject) {
+            alert('You can only have one active project at a time!');
+          } else {
+            Devs.applyForProject(profile._id, $scope.project._id);
+          }
+        });
+      } else if (user.uType == 2) {
+        alert('Only users with a Developer account can apply for projects!');
+      }
     });
   };
 
