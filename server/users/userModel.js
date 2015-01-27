@@ -21,10 +21,6 @@ var UserSchema = new mongoose.Schema({
   profileId: {
     type: String,
     default: ''
-  },
-  projects: {
-    type: Array,
-    default: []
   }
 });
 
