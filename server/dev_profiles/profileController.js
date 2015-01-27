@@ -24,6 +24,41 @@ module.exports = {
     })
   },
 
+  sendProfile: function (req, res, next) {
+    res.json({ profile: req.profile, user: req.user });
+  },
+
+  applyForProject: function (req, res, next) {
+    var findProfile = Q.nbind(Profile.findOne, Profile);
+    var findProject = Q.nbind(Project.findOne, Project);
+    var devId = req.body.devProfileId;
+    var projectId = req.body.projectId;
+    var created;
+
+    findProfile({ _id: devId }).then(function (devProfile) {
+      if (devProfile.applied.indexOf(projectId) === -1) {
+        devProfile.applied.push(projectId);
+        devProfile.save();
+      } else {
+        created = true;
+      }
+      findProject({ _id: projectId }).then(function (project) {
+        if (created) {
+          res.status(200).send(project);
+        } else {
+          project.applicants.push(devId);
+          project.save(function(err) {
+            err ? res.status(500).send(err) : res.status(200).send(project);
+          });
+        }
+      }).fail(function (err) {
+        res.status(500).send(err);
+      });
+    }).fail(function (err) {
+      res.status(500).send(err);
+    });
+  },
+
   getProfile: function (req, res, next, id) {
     var findProfile = Q.nbind(Profile.findOne, Profile);
     findProfile({ _id: id }).then(function (profile) {
@@ -59,10 +94,6 @@ module.exports = {
     });
   },
 
-  sendProfile: function (req, res, next) {
-    res.json({ profile: req.profile, user: req.user });
-  },
-
   newProfile: function (req, res, next, userId) {
     var findUser = Q.nbind(User.findOne, User);
     var findOrCreate = Q.nbind(Profile.findOrCreate, Profile);
@@ -95,41 +126,6 @@ module.exports = {
       }
     }).fail(function (error) {
       next(error);
-    });
-  },
-
-  sendEmptyProfile: function (req, res, next) {
-    res.json({ profile: req.profile, user: req.user });
-  },
-
-  applyForProject: function (req, res, next) {
-    var findProfile = Q.nbind(Profile.findOne, Profile);
-    var findProject = Q.nbind(Project.findOne, Project);
-    var devId = req.body.devProfileId;
-    var projectId = req.body.projectId;
-    var created;
-
-    findProfile({ _id: devId }).then(function (devProfile) {
-      if (devProfile.applied.indexOf(projectId) === -1) {
-        devProfile.applied.push(projectId);
-        devProfile.save();
-      } else {
-        created = true;
-      }
-      findProject({ _id: projectId }).then(function (project) {
-        if (created) {
-          res.status(200).send(project);
-        } else {
-          project.applicants.push(devId);
-          project.save(function(err) {
-            err ? res.status(500).send(err) : res.status(200).send(project);
-          });
-        }
-      }).fail(function (err) {
-        res.status(500).send(err);
-      });
-    }).fail(function (err) {
-      res.status(500).send(err);
     });
   }
 

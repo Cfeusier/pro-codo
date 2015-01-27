@@ -8,9 +8,8 @@ module.exports = function (app) {
   app.route('/')
     .post(profileController.create);
 
-  app.get('/new/:devId', profileController.sendEmptyProfile);
+  app.get('/new/:devId', profileController.sendProfile);
   app.get('/dev/:devId', profileController.sendProfile);
   app.get('/:id', profileController.sendProfile);
   app.post('/apply', profileController.applyForProject);
-
 };
