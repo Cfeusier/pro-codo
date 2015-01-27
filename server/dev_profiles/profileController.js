@@ -31,12 +31,11 @@ module.exports = {
     var findProject = Q.nbind(Project.findOne, Project);
     var devId = req.body.devProfileId;
     var projectId = req.body.projectId;
-    var created;
 
     findProfile({ _id: devId }).then(function (devProfile) {
-      module.exports.handleDevApplication(created, devProfile, projectId);
+      module.exports.handleDevApplication(devProfile, projectId);
       findProject({ _id: projectId }).then(function (project) {
-        module.exports.handleProjectApplication(created, res, project, devId);
+        module.exports.handleProjectApplication(res, project, devId);
       }).fail(function (err) { res.status(500).send(err); });
     }).fail(function (err) { res.status(500).send(err); });
   },
@@ -87,23 +86,21 @@ module.exports = {
     };
   },
 
-  handleDevApplication: function (created, devProfile, projectId) {
+  handleDevApplication: function (devProfile, projectId) {
     if (devProfile.applied.indexOf(projectId) === -1) {
       devProfile.applied.push(projectId);
       devProfile.save();
-    } else {
-      created = true;
     }
   },
 
-  handleProjectApplication: function (created, res, project, devId) {
-    if (created) {
-      res.status(200).send(project);
-    } else {
+  handleProjectApplication: function (res, project, devId) {
+    if (project.applicants.indexOf(devId) === -1) {
       project.applicants.push(devId);
       project.save(function(err) {
         err ? res.status(500).send(err) : res.status(200).send(project);
       });
+    } else {
+      res.status(200).send(project);
     }
   },
 
