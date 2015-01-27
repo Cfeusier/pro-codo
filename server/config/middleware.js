@@ -26,7 +26,6 @@ module.exports = function (app, express) {
   require('../np_profiles/profileRoutes.js')(npProfileRouter);
   require('../projects/projectRoutes.js')(projectsRouter);
 
-  app.get('/*', function(req, res) {
-    res.redirect('/');
-  });
+  // redirect back to client-app router
+  app.get('/*', function(req, res) { res.redirect('/'); });
 };
