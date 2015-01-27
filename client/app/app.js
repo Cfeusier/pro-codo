@@ -1,5 +1,9 @@
 angular.module('Procodo', [
-  'Procodo.services',
+  'Procodo.userServices',
+  'Procodo.devServices',
+  'Procodo.npServices',
+  'Procodo.projectsServices',
+  'Procodo.projectServices',
   'Procodo.users',
   'Procodo.nav',
   'Procodo.projects',
@@ -8,6 +12,7 @@ angular.module('Procodo', [
   'Procodo.nps',
   'ngRoute'
 ])
+
 .config(function($routeProvider, $httpProvider) {
   $routeProvider
     .when('/login', {
@@ -60,6 +65,7 @@ angular.module('Procodo', [
 
   $httpProvider.interceptors.push('Tokenize');
 })
+
 .factory('Tokenize', function ($window) {
   var tokenize = {
     request: function(req) {
@@ -74,6 +80,7 @@ angular.module('Procodo', [
   };
   return tokenize;
 })
+
 .run(function ($rootScope, $location, Users) {
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     if (next.$$route.originalPath !== '/login') {
