@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var helpers = require('./helpers.js');
 
 module.exports = function (app, express) {
-  // routers
+  // create routers
   var userRouter = express.Router();
   var devProfileRouter = express.Router();
   var npProfileRouter = express.Router();
@@ -29,6 +29,6 @@ module.exports = function (app, express) {
   require('../np_profiles/profileRoutes.js')(npProfileRouter);
   require('../projects/projectRoutes.js')(projectsRouter);
 
-  // redirect back to client-app router
+  // redirect back to client-app router if no server routes match
   app.get('/*', function(req, res) { res.redirect('/'); });
 };
