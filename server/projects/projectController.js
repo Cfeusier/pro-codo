@@ -36,7 +36,7 @@ module.exports = {
     }).then(function (newProject) {
       var findUser = Q.nbind(Profile.findOne, Profile);
       findUser({ userId: npId }).then(function (profile) {
-        profile.projects.push(newProject);
+        profile.projects.push(newProject._id);
         profile.save(function (err) {
           err ? res.status(500).send() : res.send(newProject);
         });
