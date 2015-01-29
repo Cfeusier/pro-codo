@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <title>Procodo | Developers + Nonprofits</title>
+  <link href='http://fonts.googleapis.com/css?family=Bitter|Open+Sans' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  <link rel="stylesheet" href="assets/font-awesome-4.3.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -11,21 +13,23 @@
     <div id="navigation">
       <div class='invalid-navigation' ng-if='!isValid()'>
         <ul>
-          <li><a href='#/' class='home'>home</a></li>
+          <h2 class="navBrand"><a href='#/'><i class="fa fa-home fa-fw"></i>Procodo</a></h2>
+          <li class='signup'><a href='#/signup'>signup</a></li>
           <li><a href='#/login' class='login'>login</a></li>
         </ul>
       </div>
       <div class='valid-navigation' ng-if='isValid()'>
         <ul>
-          <li><a href='#/' class='home'>home</a></li>
+          <h2 class="navBrand"><a href='#/'><i class="fa fa-home fa-fw"></i>Procodo</a></h2>
           <li><a href='#' class='logout' ng-click='logout()'>logout</a></li>
+          <li><a href='#/devs/dashboard' class='profile'>profile</a></li>
           <li><a href='#/projects' class='projects'>projects</a></li>
         </ul>
       </div>
     </div>
   </div>
 
-  <div ng-view></div>
+  <div class="grid grid-pad" ng-view></div>
 
   <script src="/lib/angular/angular.js"></script>
   <script src="/lib/angular-route/angular-route.js"></script>
