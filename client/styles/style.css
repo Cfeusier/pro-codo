@@ -361,9 +361,10 @@ h1, h2, h3, h4, h5 {
   font-family: 'Bitter', serif;
 }
 
-h1 {
+h1, h3 {
   color: #607D8B;
 }
+
 
 p, a, li {
   font-family: 'Open Sans', sans-serif;
@@ -440,10 +441,11 @@ ul {
 }
 
 .btn.btn-danger {
+  font-size: 20pt;
   margin: 10px auto;
   padding: 10px;
-  border: 1px solid #D7CCC8;
   background-color: #607D8B;
+  border: 2px solid #607D8B;
 }
 
 #squeeze > div:nth-child(4) > div.signup.col-6-12 > form > button {
@@ -457,8 +459,8 @@ ul {
 .btn.btn-danger:hover {
   margin: 10px auto;
   padding: 10px;
-  border: 1px solid #607D8B;
   background-color: #D7CCC8;
+  border: 2px solid #607D8B;
   cursor: pointer;
   cursor: hand;
 }
@@ -486,13 +488,6 @@ ul {
   font-size: 13pt;
 }
 
-.btn.btn-danger {
-  text-decoration: none;
-  color: #607D8B;
-  font-size: 20pt;
-  border-radius: 2px;
-}
-
 .login-link {
   color: #607D8B;
   display: block;
@@ -510,10 +505,14 @@ ul {
   padding-bottom: 20px;
 }
 
-.benefits{
+.benefits {
   text-align: center;
   margin: 10px auto;
   padding-right: 20px;
+}
+
+.benefits p {
+  padding: 0 30px;
 }
 
 .dev-cta.card i {
@@ -528,6 +527,26 @@ ul {
 
 .signup > form > div.form-control > span > i {
   margin-right: 4px;
+}
+
+.learn-more {
+  margin: 42px auto;
+}
+
+.learn-more-btn {
+  background-color: #D7CCC8;
+  border: 2px solid #607D8B;
+  color: #607D8B;
+  font-size: 15pt;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.learn-more-btn:hover {
+  background-color: #607D8B;
+  color: #D7CCC8;
+  cursor: pointer;
+  cursor: hand;
 }
 
 @media handheld, only screen and (max-width: 767px) {
