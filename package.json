@@ -1,10 +1,13 @@
 {
   "name": "procodo",
   "version": "0.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "connecting developers and non-profits",
   "author": "Clark Feusier",
-  "license": "ISC",
+  "license": "Copyright 2015, Clark Feusier, all rights reserved",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.4.3",
@@ -14,18 +17,25 @@
     "mongoose-findorcreate": "^0.1.2",
     "morgan": "^1.1.1",
     "q": "^1.0.1",
-    "request": "^2.36.0"
-  },
-  "devDependencies": {
+    "request": "^2.36.0",
     "browser-sync": "^1.5.7",
-    "clone-stats": "0.0.1",
-    "expect.js": "^0.3.1",
     "gulp": "^3.8.5",
     "gulp-if": "^1.2.5",
     "gulp-jshint": "^1.6.3",
     "gulp-nodemon": "^1.0.4",
     "gulp-shell": "^0.2.7",
-    "jshint-stylish": "^0.2.0",
+    "jshint-stylish": "^0.2.0"
+  },
+  "devDependencies": {
+    "clone-stats": "0.0.1",
+    "expect.js": "^0.3.1",
     "mocha": "^1.20.1"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cfeusier/pro-codo"
   }
 }
