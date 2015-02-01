@@ -36,7 +36,7 @@ module.exports = {
             saveUser().then(function (updatedUser) {
               req.user = {
                 user: {
-                  username: updatedUser.username,
+                  email: updatedUser.email,
                   uType: updatedUser.uType,
                   _id: updatedUser._id,
                   profileId: updatedUser.profileId
@@ -75,7 +75,7 @@ module.exports = {
             saveUser().then(function (updatedUser) {
               req.user = {
                 user: {
-                  username: updatedUser.username,
+                  email: updatedUser.email,
                   uType: updatedUser.uType,
                   _id: updatedUser._id,
                   profileId: updatedUser.profileId

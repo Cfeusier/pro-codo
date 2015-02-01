@@ -289,15 +289,15 @@ body {
 
 /* CUSTOM STYLES */
 
-#navigation {
+.navigation {
   background-color: #607D8B;
 }
 
-#navigation ul {
+.navigation ul {
   padding: 20px;
 }
 
-#navigation li {
+.navigation li {
   display: inline-block;
   float: right;
   border: 1px solid #D7CCC8;
@@ -305,11 +305,11 @@ body {
   margin: 0 5px;
 }
 
-#navigation li:hover {
+.navigation li:hover {
   background-color: #D7CCC8;
 }
 
-#navigation li:hover a {
+.navigation li:hover a {
   color: #263238;
 }
 
@@ -337,12 +337,12 @@ p {
   padding: 0 10px;
 }
 
-#navigation a {
+.navigation a {
   color: #D7CCC8;
   text-decoration: none;
 }
 
-#navigation h2 a {
+.navigation h2 a {
   font-size: 20pt;
   color: #D7CCC8;
   font-family: 'Bitter', serif;
@@ -448,11 +448,11 @@ ul {
   border: 2px solid #607D8B;
 }
 
-#squeeze > div:nth-child(4) > div.signup.col-6-12 > form > button {
+.squeeze > div:nth-child(4) > div.signup.col-6-12 > form > button {
   color: #D7CCC8;
 }
 
-#squeeze > div:nth-child(4) > div.signup.col-6-12 > form > button > i {
+.squeeze > div:nth-child(4) > div.signup.col-6-12 > form > button > i {
   color: #D7CCC8;
 }
 
@@ -465,11 +465,11 @@ ul {
   cursor: hand;
 }
 
-#squeeze > div:nth-child(4) > div.signup.col-6-12 > form > button:hover {
+.squeeze > div:nth-child(4) > div.signup.col-6-12 > form > button:hover {
   color: #607D8B;
 }
 
-#squeeze > div:nth-child(4) > div.signup.col-6-12 > form > button:hover > i {
+.squeeze > div:nth-child(4) > div.signup.col-6-12 > form > button:hover > i {
   color: #607D8B;
 }
 
@@ -558,7 +558,7 @@ ul {
     padding-right: 10px;
   }
 
-  #navigation li {
+  .navigation li {
     margin: 0 2.5px;
   }
 
@@ -566,5 +566,23 @@ ul {
     width: 70%;
   }
 
+  .navigation h2 > a > span {
+    font-size: 18pt;
+  }
+
+  .navigation > div > ul {
+    padding: 10px 5px;
+  }
+
+  .fa.fa-home.fa-fw {
+    display: none;
+  }
 }
 
+.create-profile {
+  margin: 40px;
+}
+
+.apply-btn {
+  margin-bottom: 20px;
+}

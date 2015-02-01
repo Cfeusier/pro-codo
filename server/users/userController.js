@@ -4,11 +4,11 @@ var jwt = require('jwt-simple');
 
 module.exports = {
   login: function (req, res, next) {
-    var username = req.body.username;
+    var email = req.body.email;
     var password = req.body.password;
     var findUser = Q.nbind(User.findOne, User);
 
-    findUser({ username: username }).then(function (user) {
+    findUser({ email: email }).then(function (user) {
       if (!user) {
         next(new Error('User does not exist'));
       } else {
@@ -27,20 +27,20 @@ module.exports = {
   },
 
   signup: function (req, res, next) {
-    var username = req.body.username;
+    var email = req.body.email;
     var password = req.body.password;
     var uType = req.body.uType.value;
     var create;
     var newUser;
     var findOne = Q.nbind(User.findOne, User);
 
-    findOne({ username: username }).then(function(user) {
+    findOne({ email: email }).then(function(user) {
       if (user) {
         next(new Error('User already exists!'));
       } else {
         create = Q.nbind(User.create, User);
         newUser = {
-          username: username,
+          email: email,
           password: password,
           uType: uType
         };
@@ -61,7 +61,7 @@ module.exports = {
     } else {
       var user = jwt.decode(token, 'monkeydonkeyeater');
       var findUser = Q.nbind(User.findOne, User);
-      findUser({ username: user.username }).then(function (foundUser) {
+      findUser({ email: user.email }).then(function (foundUser) {
         foundUser ? res.send(200) : res.send(401);
       }).fail(function (error) {
         next(error);
@@ -73,10 +73,10 @@ module.exports = {
     if (token) {
       var user = jwt.decode(token, 'monkeydonkeyeater');
       var findUser = Q.nbind(User.findOne, User);
-      findUser({ username: user.username }).then(function(foundUser) {
+      findUser({ email: user.email }).then(function(foundUser) {
         var newUser = {
           user: {
-            username: foundUser.username,
+            email: foundUser.email,
             uType: foundUser.uType,
             _id: foundUser._id,
             profileId: foundUser.profileId
@@ -99,7 +99,7 @@ module.exports = {
   findUser: function(req, res, next, id) {
     var findUser = Q.nbind(User.findOne, User);
     findUser({ _id: id }).then(function (user) {
-      req.queriedUsername =  user.username;
+      req.queriedEmail =  user.email;
       next();
     }).fail(function (error) {
       next(new Error("No user found!"));
@@ -107,6 +107,6 @@ module.exports = {
   },
 
   sendUser: function(req, res, next) {
-    res.send(req.queriedUsername);
+    res.send(req.queriedEmail);
   }
 };

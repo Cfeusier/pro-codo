@@ -8,7 +8,7 @@ angular.module('Procodo.landing', [])
     Users.getUser(function(user) {
       var type = user.uType;
       LsKeys.lsSet('io.procodo.userId', user._id);
-      LsKeys.lsSet('io.procodo.username', user.username);
+      LsKeys.lsSet('io.procodo.email', user.email);
       LsKeys.lsSet('io.procodo.uType', user.uType);
       LsKeys.lsSet('io.procodo.profileId', user.profileId);
       if (type == 1) {
