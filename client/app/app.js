@@ -14,7 +14,7 @@ angular.module('Procodo', [
   'ngRoute'
 ])
 
-.config(function($routeProvider, $httpProvider) {
+.config(function ($routeProvider, $httpProvider) {
   $routeProvider
     .when('/login', {
       templateUrl: 'app/users/login.html',
@@ -54,6 +54,10 @@ angular.module('Procodo', [
     })
     .when('/about', {
       templateUrl: 'app/landing/about.html',
+      controller: 'LandingCtrl'
+    })
+    .when('/project-guidelines', {
+      templateUrl: 'app/landing/project-guidelines.html',
       controller: 'LandingCtrl'
     })
     .when('/not-found', {
