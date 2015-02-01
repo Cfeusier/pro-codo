@@ -18,28 +18,28 @@ var paths = {
   styles: ['client/styles/style.css'],
   app: {
     src: [
-      paths.src + '/app/users/users.js',
-      paths.src + '/app/devs/devs.js',
-      paths.src + '/app/projects/projects.js',
-      paths.src + '/app/nps/nps.js',
-      paths.src + '/app/nav/nav.js',
-      paths.src + '/app/landing/landing.js',
-      paths.src + '/app/services/lsKeys.js',
-      paths.src + '/app/services/users.js',
-      paths.src + '/app/services/devs.js',
-      paths.src + '/app/services/nps.js',
-      paths.src + '/app/services/projects.js',
-      paths.src + '/app/services/project.js',
-      paths.src + '/app/app.js'
+      this.src + '/app/users/users.js',
+      this.src + '/app/devs/devs.js',
+      this.src + '/app/projects/projects.js',
+      this.src + '/app/nps/nps.js',
+      this.src + '/app/nav/nav.js',
+      this.src + '/app/landing/landing.js',
+      this.src + '/app/services/lsKeys.js',
+      this.src + '/app/services/users.js',
+      this.src + '/app/services/devs.js',
+      this.src + '/app/services/nps.js',
+      this.src + '/app/services/projects.js',
+      this.src + '/app/services/project.js',
+      this.src + '/app/app.js'
     ],
-    dest: paths.dest + '/app'
+    dest: this.dest + '/app'
   },
   vendor: {
     src: [
-      paths.src + '/lib/angular/angular.js',
-      paths.src + '/lib/angular-route/angular-route.js'
+      this.src + '/lib/angular/angular.js',
+      this.src + '/lib/angular-route/angular-route.js'
     ],
-    dest: paths.dest + '/lib'
+    dest: this.dest + '/lib'
   }
 };
 
