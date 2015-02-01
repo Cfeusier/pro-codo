@@ -2,7 +2,7 @@
   "name": "procodo",
   "version": "0.0.0",
   "authors": ["Clark Feusier"],
-  "license": "ISC",
+  "license": "Copyright 2015, Clark Feusier, all rights reserved",
   "ignore": [
     "**/.*",
     "node_modules",
