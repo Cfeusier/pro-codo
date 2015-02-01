@@ -52,6 +52,10 @@ angular.module('Procodo', [
       templateUrl: 'app/projects/project.html',
       controller: 'ProjectsCtrl'
     })
+    .when('/about', {
+      templateUrl: 'app/landing/about.html',
+      controller: 'LandingCtrl'
+    })
     .when('/not-found', {
       templateUrl: 'app/landing/not-found.html',
       controller: 'LandingCtrl'
@@ -84,7 +88,7 @@ angular.module('Procodo', [
 
 .run(function ($rootScope, $location, Users) {
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-    if (next.$$route.originalPath !== '/login' || next.$$route.originalPath !== '/about') {
+    if (next.$$route.originalPath !== '/login' && next.$$route.originalPath !== '/about') {
       if (next.$$route && !Users.isUser()) {
         $location.path('/signup');
       }

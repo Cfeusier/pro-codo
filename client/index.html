@@ -1,53 +1,56 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="Procodo">
-<head>
-  <meta charset="utf-8" />
-  <title>Procodo | Developers + Nonprofits</title>
-  <link href='http://fonts.googleapis.com/css?family=Bitter|Open+Sans' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="styles/style.css" />
-  <link rel="stylesheet" href="assets/font-awesome-4.3.0/css/font-awesome.min.css">
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Procodo | Developers + Nonprofits</title>
+    <!-- TODO: concat, min styles -->
+    <link href='http://fonts.googleapis.com/css?family=Bitter|Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link rel="stylesheet" href="assets/font-awesome-4.3.0/css/font-awesome.min.css">
+  </head>
+  <body>
 
-  <div ng-controller="NavCtrl">
-    <div id="navigation">
-      <div class='invalid-navigation' ng-if='!isValid()'>
-        <ul>
-          <h2 class="navBrand"><a href='#/'><i class="fa fa-home fa-fw"></i>Procodo</a></h2>
-          <li class='signup'><a href='#/signup'>signup</a></li>
-          <li><a href='#/login' class='login'>login</a></li>
-        </ul>
-      </div>
-      <div class='valid-navigation' ng-if='isValid()'>
-        <ul>
-          <h2 class="navBrand"><a href='#/'><i class="fa fa-home fa-fw"></i>Procodo</a></h2>
-          <li><a href='#' class='logout' ng-click='logout()'>logout</a></li>
-          <li><a href='#/devs/dashboard' class='profile'>profile</a></li>
-          <li><a href='#/projects' class='projects'>projects</a></li>
-        </ul>
+    <div ng-controller="NavCtrl">
+      <div class="navigation">
+        <div class='invalid-navigation' ng-if='!isValid()'>
+          <ul>
+            <h2 class="navBrand"><a href='#/'><i class="fa fa-home fa-fw"></i><span class="navAnchor">Procodo</span></a></h2>
+            <li class='signup'><a href='#/signup'>signup</a></li>
+            <li><a href='#/login' class='login'>login</a></li>
+          </ul>
+        </div>
+        <div class='valid-navigation' ng-if='isValid()'>
+          <ul>
+            <h2 class="navBrand"><a href='#/'><i class="fa fa-home fa-fw"></i><span class="navAnchor">Procodo</span></a></h2>
+            <li><a href='#' class='logout' ng-click='logout()'>logout</a></li>
+            <li ng-if="isDev()"><a href='#/devs/dashboard' class='profile'>dashboard</a></li>
+            <li ng-if="isNp()"><a href='#/nps/dashboard' class='profile'>dashboard</a></li>
+            <li><a href='#/projects' class='projects'>projects</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="grid grid-pad" ng-view></div>
+    <div class="grid grid-pad" ng-view></div>
 
-  <script src="/lib/angular/angular.js"></script>
-  <script src="/lib/angular-route/angular-route.js"></script>
+    <!-- TODO: concat, min vendor js  -->
+    <script src="/lib/angular/angular.js"></script>
+    <script src="/lib/angular-route/angular-route.js"></script>
 
-  <script src="/app/users/users.js"></script>
-  <script src="/app/devs/devs.js"></script>
-  <script src="/app/projects/projects.js"></script>
-  <script src="/app/nps/nps.js"></script>
-  <script src="/app/nav/nav.js"></script>
-  <script src="/app/landing/landing.js"></script>
+    <!-- TODO: concat, min app js  -->
+    <script src="/app/users/users.js"></script>
+    <script src="/app/devs/devs.js"></script>
+    <script src="/app/projects/projects.js"></script>
+    <script src="/app/nps/nps.js"></script>
+    <script src="/app/nav/nav.js"></script>
+    <script src="/app/landing/landing.js"></script>
+    <script src="/app/services/lsKeys.js"></script>
+    <script src="/app/services/users.js"></script>
+    <script src="/app/services/devs.js"></script>
+    <script src="/app/services/nps.js"></script>
+    <script src="/app/services/projects.js"></script>
+    <script src="/app/services/project.js"></script>
+    <script src="/app/app.js"></script>
 
-  <script src="/app/services/lsKeys.js"></script>
-  <script src="/app/services/users.js"></script>
-  <script src="/app/services/devs.js"></script>
-  <script src="/app/services/nps.js"></script>
-  <script src="/app/services/projects.js"></script>
-  <script src="/app/services/project.js"></script>
-
-  <script src="/app/app.js"></script>
-</body>
+  </body>
 </html>

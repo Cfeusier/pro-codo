@@ -13,7 +13,7 @@ angular.module('Procodo.projects', [])
   $scope.getProjects = function () {
     Projects.getProjects().then(function (projects) {
       $scope.data.projects = projects;
-    })
+    });
   };
 
   $scope.getProfile = function () {
@@ -49,27 +49,41 @@ angular.module('Procodo.projects', [])
         Users.findUser($scope.project.npId).then(function (npName) {
           $scope.np.organizationName = npName;
         });
+        $scope.getUser();
       });
     });
   };
 
   $scope.projectApply = function () {
-    Users.getUser(function (user) {
-      $scope.user = user;
-      if (user.uType == 1) {
-        Devs.getProfile(user._id, function (profile) {
+    $scope.getUser(function () {
+      if ($scope.user.uType == 1) {
+        Devs.getProfile($scope.user._id, function (profile) {
           if (!!profile.currentProject) {
             alert('You can only have one active project at a time!');
           } else {
             Devs.applyForProject(profile._id, $scope.project._id);
           }
         });
-      } else if (user.uType == 2) {
+      } else {
         alert('Only users with a Developer account can apply for projects!');
       }
     });
   };
 
-  $scope.name = 'ProjectsCtrl';
+  $scope.getUser = function (cb) {
+    Users.getUser(function (user) {
+      $scope.user = user;
+      cb ? cb() : null;
+    });
+  };
 
+  $scope.isDev = function () {
+    return $scope.user.uType == 1 ? true : false;
+  };
+
+  $scope.isNp = function () {
+    return !$scope.isDev();
+  };
+
+  $scope.name = 'ProjectsCtrl';
 });

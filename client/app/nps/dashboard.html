@@ -1,19 +1,48 @@
-<div id='np-dashboard' ng-init='getUser()'>
-  <h2>Dashboard for {{ np.account.username }}</h2>
-  <a href="#/nps/new" ng-if="!hasProfile()">Create your Profile</a>
-  <div class="profile" ng-if="hasProfile() && !hasProject()">
-    <h3>Organization Name: {{ np.profile.organizationName }}</h3>
-    <a href="#/projects/new">Post a New Project</a>
-    <h4>Account Holder: <span style='font-size: 10pt;'>{{ np.profile.accountHolder }}</span></h4>
-  </div>
-  <a href="api/nps/profiles/{{ np.account._id }}">Edit your Profile</a>
+<div class='np-dashboard' ng-init='getUser()'>
+  <h1>Dashboard</h1>
 
-  <div class="projects" ng-if="hasProject()">
-    <h3>Organization Name: {{ np.profile.organizationName }}</h3>
-    <div class="projectList" ng-repeat="project in np.profile.projects">
-      <hr />
-      <h2>Current Project: {{ project.title }}</h2>
-      <p>Project Requirements: {{ project.requirements }}</p>
+  <div class="np-profile-card col-1-3">
+    <div class="card">
+      <h2>Profile</h2>
+
+      <div class="create-profile" ng-if="!hasProfile()">
+        <a class="learn-more-btn" href="#/nps/new">Create your Profile</a>
+      </div>
+
+      <div class="profile" ng-if="hasProfile()">
+        <h3>Organization: {{ np.profile.organizationName }}</h3>
+        <h4>Account Holder: <span style='font-size: 10pt;'>{{ np.profile.accountHolder }}</span></h4>
+        <h4>Account Email: <span style='font-size: 10pt;'>{{ np.account.email }}</span></h4>
+        <a href="api/nps/profiles/{{ np.account._id }}" class="login-link">Edit your Profile</a>
+      </div>
     </div>
   </div>
+
+  <div class="projects col-2-3" ng-if="hasProfile() && !hasProject()">
+    <div class="project-card card">
+      <h1>You Have 0 Projects</h1>
+      <a href="#" class="login-link">Read Project Guidelines</a>
+      <br />
+      <a class="learn-more-btn" ng-if="!hasProject()" href="#/projects/new">Post a New Project</a>
+      <br />
+      <br />
+      <br />
+    </div>
+  </div>
+
+  <div  ng-if="hasProfile() && hasProject()" class="wrapper">
+    <div class="projects col-2-3">
+      <div class="project-card card">
+        <h2>Current Project</h2>
+        <h3>Current Project: {{ currentProject.title }}</h3>
+        <h5>Project Requirements: {{ currentProject.requirements }}</h5>
+        <h4>Project Length: {{ currentProject.weeks }}</h4>
+        <h4>Workload per Week: {{ currentProject.hrsWeek }}</h4>
+        <button class="learn-more-btn">manage project</button>
+        <br />
+        <br />
+      </div>
+    </div>
+  </div>
+
 </div>

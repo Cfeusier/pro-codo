@@ -24,6 +24,10 @@ angular.module('Procodo.userServices', [])
     return !!LsKeys.lsGet('io.procodo');
   };
 
+  var getUType = function () {
+    return LsKeys.lsGet('io.procodo.uType');
+  };
+
   var logout = function () {
     LsKeys.removeAllKeys();
     $location.path('/');
@@ -53,7 +57,8 @@ angular.module('Procodo.userServices', [])
     isUser: isUser,
     logout: logout,
     getUser: getUser,
-    findUser: findUser
+    findUser: findUser,
+    getUType: getUType
   };
 
 });
