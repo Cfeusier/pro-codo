@@ -1,4 +1,4 @@
-# Procodo #
+# [Procodo](http://app.procodo.io) #
 
 ### Developers and Non-Profits, Connected ###
 
@@ -20,10 +20,10 @@ Non-profits have a difficult time creating impactful products because of the bar
 
 ## How to Get Started ##
 
-Just navigate to [Procodo.io](#). **Developers**, create a profile and start applying to interesting projects. **Non-profit** organizations, create a profile and post a project!
+Just navigate to [Procodo.io](http://app.procodo.io). **Developers**, create a profile and start applying to interesting projects. **Non-profit** organizations, create a profile and post a project!
 
 <blockquote>We can finally get talented engineers to help us build the products that we have always envisioned changing the world &mdash; thanks to <em>Procodo</em></blockquote>
 
 &mdash; Hypothetical Customer, *really cool title* of **Cool Non-Profit**
 
-Try out **Procodo** now! Just head to [procodo.io](#) and get started!
+Try out **Procodo** now! Just head to [procodo.io](http://app.procodo.io) and get started!
