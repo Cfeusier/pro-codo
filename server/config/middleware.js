@@ -1,6 +1,7 @@
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var helpers = require('./helpers.js');
+var path = require('path');
 
 module.exports = function (app, express) {
   // create routers
@@ -15,7 +16,7 @@ module.exports = function (app, express) {
   app.use(bodyParser.json());
 
   // serve client-app payload on root route
-  app.use(express.static(__dirname + '/../../client'));
+  app.use(express.static(path.join(__dirname + '/../../client/public')));
 
   // register routers
   app.use('/api/users', userRouter);
@@ -31,6 +32,8 @@ module.exports = function (app, express) {
   require('../np_profiles/profileRoutes.js')(npProfileRouter);
   require('../projects/projectRoutes.js')(projectsRouter);
 
-  // redirect back to client-app router if no server routes match
-  app.get('/*', function(req, res) { res.redirect('/'); });
+  // // redirect back to client-app router if no server routes match
+  app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, '/../../client/public/index.html'));
+  });
 };

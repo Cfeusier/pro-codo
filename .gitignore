@@ -23,3 +23,10 @@ client/lib
 .floobit
 .floo
 .flooignore
+
+# Dependency directories
+node_modules
+client/src/lib
+
+# Build
+client/public

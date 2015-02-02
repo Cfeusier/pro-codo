@@ -1,8 +1,10 @@
 {
   "name": "procodo",
   "version": "0.0.0",
-  "authors": ["Clark Feusier"],
-  "license": "ISC",
+  "authors": [
+    "Clark Feusier"
+  ],
+  "license": "Copyright 2015, Clark Feusier, all rights reserved",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -12,6 +14,6 @@
   "dependencies": {
     "angular": "~1.2.18",
     "angular-route": "~1.2.18",
-    "angular-mocks": "~1.2.18"
+    "font-awesome": "~4.3.0"
   }
 }

@@ -1,33 +1,47 @@
 {
   "name": "procodo",
   "version": "0.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "connecting developers and non-profits",
   "author": "Clark Feusier",
-  "license": "ISC",
-  "devDependencies": {
-    "browser-sync": "^1.5.7",
-    "clone-stats": "0.0.1",
-    "expect.js": "^0.3.1",
-    "gulp": "^3.8.5",
-    "gulp-if": "^1.2.5",
-    "gulp-jshint": "^1.6.3",
-    "gulp-nodemon": "^1.0.4",
-    "gulp-shell": "^0.2.7",
-    "jshint-stylish": "^0.2.0",
-    "mocha": "^1.20.1"
+  "license": "Copyright 2015, Clark Feusier, all rights reserved",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "postinstall": "bower install && gulp build"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.4.3",
+    "bower": "^1.3.12",
+    "browser-sync": "^1.5.7",
     "express": "^4.4.5",
+    "gulp": "^3.8.5",
+    "gulp-concat": "^2.4.3",
+    "gulp-if": "^1.2.5",
+    "gulp-jshint": "^1.6.3",
+    "gulp-minify-css": "^0.4.3",
+    "gulp-nodemon": "^1.0.4",
+    "gulp-rename": "^1.2.0",
+    "gulp-shell": "^0.2.7",
+    "gulp-uglify": "^1.1.0",
+    "jshint-stylish": "^0.2.0",
     "jwt-simple": "^0.2.0",
     "mongoose": "^3.8.12",
     "mongoose-findorcreate": "^0.1.2",
     "morgan": "^1.1.1",
-    "passport": "^0.2.0",
-    "passport-local": "^1.0.0",
     "q": "^1.0.1",
     "request": "^2.36.0"
+  },
+  "devDependencies": {
+    "clone-stats": "0.0.1",
+    "expect.js": "^0.3.1",
+    "mocha": "^1.20.1"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cfeusier/pro-codo"
   }
 }
