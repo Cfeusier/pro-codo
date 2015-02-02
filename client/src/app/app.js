@@ -17,55 +17,55 @@ angular.module('Procodo', [
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
     .when('/login', {
-      templateUrl: 'app/users/login.html',
+      templateUrl: 'app/templates/login.html',
       controller: 'UsersCtrl'
     })
     .when('/signup', {
-      templateUrl: 'app/users/signup.html',
+      templateUrl: 'app/templates/signup.html',
       controller: 'UsersCtrl'
     })
     .when('/devs/dashboard', {
-      templateUrl: 'app/devs/dashboard.html',
+      templateUrl: 'app/templates/dev-dashboard.html',
       controller: 'DevsCtrl'
     })
     .when('/nps/dashboard', {
-      templateUrl: 'app/nps/dashboard.html',
+      templateUrl: 'app/templates/np-dashboard.html',
       controller: 'NpsCtrl'
     })
     .when('/devs/new', {
-      templateUrl: 'app/devs/new-profile.html',
+      templateUrl: 'app/templates/new-dev-profile.html',
       controller: 'ProfilesCtrl'
     })
     .when('/nps/new', {
-      templateUrl: 'app/nps/new-profile.html',
+      templateUrl: 'app/templates/new-np-profile.html',
       controller: 'NpsProfilesCtrl'
     })
     .when('/projects/new', {
-      templateUrl: 'app/projects/new-project.html',
+      templateUrl: 'app/templates/new-project.html',
       controller: 'ProjectsCtrl'
     })
     .when('/projects', {
-      templateUrl: 'app/projects/index.html',
+      templateUrl: 'app/templates/projects.html',
       controller: 'ProjectsCtrl'
     })
     .when('/projects/:projId', {
-      templateUrl: 'app/projects/project.html',
+      templateUrl: 'app/templates/project.html',
       controller: 'ProjectsCtrl'
     })
     .when('/about', {
-      templateUrl: 'app/landing/about.html',
+      templateUrl: 'app/templates/about.html',
       controller: 'LandingCtrl'
     })
     .when('/project-guidelines', {
-      templateUrl: 'app/landing/project-guidelines.html',
+      templateUrl: 'app/templates/project-guidelines.html',
       controller: 'LandingCtrl'
     })
     .when('/not-found', {
-      templateUrl: 'app/landing/not-found.html',
+      templateUrl: 'app/templates/not-found.html',
       controller: 'LandingCtrl'
     })
     .when('/', {
-      templateUrl: 'app/landing/home.html',
+      templateUrl: 'app/templates/home.html',
       controller: 'LandingCtrl'
     })
     .otherwise({

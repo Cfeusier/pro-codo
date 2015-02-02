@@ -3,10 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <title>Procodo | Developers + Nonprofits</title>
-    <!-- TODO: concat, min styles -->
-    <link href='http://fonts.googleapis.com/css?family=Bitter|Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="styles/style.css" />
-    <link rel="stylesheet" href="assets/font-awesome-4.3.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Bitter|Open+Sans' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/assets/styles/styles.min.css" />
+    <script src="/lib/vendor.min.js"></script>
   </head>
   <body>
 
@@ -33,24 +32,6 @@
 
     <div class="grid grid-pad" ng-view></div>
 
-    <!-- TODO: concat, min vendor js  -->
-    <script src="/lib/angular/angular.js"></script>
-    <script src="/lib/angular-route/angular-route.js"></script>
-
-    <!-- TODO: concat, min app js  -->
-    <script src="/app/users/users.js"></script>
-    <script src="/app/devs/devs.js"></script>
-    <script src="/app/projects/projects.js"></script>
-    <script src="/app/nps/nps.js"></script>
-    <script src="/app/nav/nav.js"></script>
-    <script src="/app/landing/landing.js"></script>
-    <script src="/app/services/lsKeys.js"></script>
-    <script src="/app/services/users.js"></script>
-    <script src="/app/services/devs.js"></script>
-    <script src="/app/services/nps.js"></script>
-    <script src="/app/services/projects.js"></script>
-    <script src="/app/services/project.js"></script>
-    <script src="/app/app.js"></script>
-
+    <script src='/app/app.min.js'></script>
   </body>
 </html>
