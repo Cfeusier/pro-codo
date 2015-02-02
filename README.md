@@ -27,3 +27,11 @@ Just navigate to [Procodo.io](http://app.procodo.io). **Developers**, create a p
 &mdash; Hypothetical Customer, *really cool title* of **Cool Non-Profit**
 
 Try out **Procodo** now! Just head to [procodo.io](http://app.procodo.io) and get started!
+
+---
+
+### Contribuiting to ***Procodo*** ###
+
+1. Check out the [contribution guidelines](CONTRIBUTING.md)
+2. Check out the [style guide](STYLE_GUIDE.md)
+3. Contribute!
