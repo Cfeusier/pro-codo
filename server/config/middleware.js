@@ -33,7 +33,7 @@ module.exports = function (app, express) {
   require('../projects/projectRoutes.js')(projectsRouter);
 
   // // redirect back to client-app router if no server routes match
-  // app.get('/*', function(req, res) {
-  //   res.sendFile(path.join(__dirname, '/../../client/public/index.html'));
-  // });
+  app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, '/../../client/public/index.html'));
+  });
 };
