@@ -1,29 +1,14 @@
-'use strict';
-
 var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
-var when = require('gulp-if');
-var shell = require('gulp-shell');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var minCss = require("gulp-minify-css");
 var bs = require('browser-sync');
-var reload = bs.reload;
 var src = './client/src';
 var dest = './client/public';
 
 var paths = {
-  scripts: ['client/app/**/*.js'],
-  html: ['client/app/**/*.html', 'client/index.html'],
-  styles: ['client/styles/style.css'],
-  css: {
-    src: [
-      src + '/lib/font-awesome/css/font-awesome.min.css',
-      src + '/assets/styles/**/{*.css, _*.css}'
-    ],
-    dest: dest + '/assets/styles'
-  },
   app: {
     src: [
       src + '/app/ctrls/users.js',
@@ -41,6 +26,13 @@ var paths = {
       src + '/app/app.js'
     ],
     dest: dest + '/app'
+  },
+  css: {
+    src: [
+      src + '/lib/font-awesome/css/font-awesome.min.css',
+      src + '/assets/styles/**/{*.css, _*.css}'
+    ],
+    dest: dest + '/assets/styles'
   },
   vendor: {
     src: [
@@ -150,7 +142,5 @@ gulp.task('build', [
   'templates',
   'index'
 ]);
-
-gulp.task('heroku:production', ['build']);
 
 gulp.task('default', ['watch']);
