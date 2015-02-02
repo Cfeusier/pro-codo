@@ -34,6 +34,6 @@ module.exports = function (app, express) {
 
   // // redirect back to client-app router if no server routes match
   app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, '/../../client/public/index.html'));
+    res.redirect('/');
   });
 };
