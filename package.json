@@ -7,7 +7,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "postinstall": "gulp build"
+    "postinstall": "bower install && gulp build"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
