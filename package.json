@@ -6,7 +6,8 @@
   "license": "Copyright 2015, Clark Feusier, all rights reserved",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "postinstall": "gulp build"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
