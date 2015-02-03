@@ -1,10 +1,16 @@
-<div id='login'>
-<h1>Login</h1>
-  <form name="loginForm" ng-submit='login()'>
-    <input type='text'ng-model='user.email'>
-    <input type="password" ng-model='user.password'>
-    <button>Login</button>
+<div class='login-form col-2-3'>
+  <h1>Login</h1>
+  <form class='card signup-form-container' name="loginForm" ng-submit='login()'>
+    <h3>Login to <em>Procodo</em></h3>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+      <input class='form-control signup-input margin-bottom-sm' type='email' ng-model='user.email' placeholder='email'>
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+      <input class='form-control signup-input' type="password" ng-model='user.password' placeholder='password'>
+    </div>
+    <button class="btn btn-danger"><i class="fa fa fa-sign-in fa-lg"></i> login</button>
+    <a class="login-link" href="#/signup">Not a member yet? <strong>Signup</strong> now!</a>
   </form>
-  <br />
-  <a href="#/signup">Not a member yet? <strong>Signup</strong> now!</a>
 </div>

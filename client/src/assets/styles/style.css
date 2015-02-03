@@ -397,6 +397,12 @@ ul {
   clear: both;
 }
 
+.login-form {
+  margin: 10px auto;
+  padding-right: 20px;
+  clear: both;
+}
+
 .footer {
   background-color: #607D8B;
   color: #D7CCC8;
@@ -446,6 +452,7 @@ ul {
   padding: 10px;
   background-color: #607D8B;
   border: 2px solid #607D8B;
+  color: #D7CCC8;
 }
 
 .squeeze > div:nth-child(4) > div.signup.col-6-12 > form > button {
@@ -463,6 +470,7 @@ ul {
   border: 2px solid #607D8B;
   cursor: pointer;
   cursor: hand;
+  color: #607D8B;
 }
 
 .squeeze > div:nth-child(4) > div.signup.col-6-12 > form > button:hover {
@@ -478,6 +486,11 @@ ul {
 }
 
 .signup i {
+  color: #607D8B;
+  font-size: 20pt;
+}
+
+.login-form i.fa.fa-fw {
   color: #607D8B;
   font-size: 20pt;
 }
@@ -586,3 +599,4 @@ ul {
 .apply-btn {
   margin-bottom: 20px;
 }
+
