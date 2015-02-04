@@ -1,85 +1,101 @@
 <div class="squeeze">
-  <header>
-    <h3>Developers + Non-Profits</h3>
-  </header>
+    <header>
+        <h3>Developers + Non-Profits</h3>
+    </header>
 
-  <div class="col-1-2">
-    <div class="dev-cta card">
-      <h2>Developers</h2>
-      <i class="fa fa-code fa-fw"></i>
-      <h1>build your portfolio</h1>
-      <p>
-        Looking to build interesting and valuable products for showcase in your portfolio?
-      </p>
-      <p>
-        Sign up below and start applying to interesting projects!
-      </p>
-    </div>
-  </div>
+    <div class="col-1-2">
+        <div class="dev-cta card">
+            <h2>Developers</h2>
+            <i class="fa fa-code fa-fw"></i>
 
-  <div class="col-1-2">
-    <div class="np-cta card">
-      <h2>Non-Profits</h2>
-      <i class="fa fa-users fa-fw"></i>
-      <h1>get help changing the world</h1>
-      <p>
-        Do you have limited resources to build interesting and valuable products that help the world?
-      </p>
-      <p>
-        Get started by signing up below and posting a project!
-      </p>
-    </div>
-  </div>
+            <h1>build your portfolio</h1>
 
-  <div class="wrapper">
-    <div class="signup col-6-12">
-      <form name="signupForm" ng-submit='signup()' class="card signup-form-container">
-        <h3>Signup</h3>
-        <div class="form-control"><span class="input-group-addon"><i class="fa fa-wrench fa-fw"></i></span>
-          <select class="signup-input" ng-model='user.uType' ng-options='opt as opt.label for opt in uTypes'>
-          </select>
+            <p>
+                Looking to build interesting and valuable products for showcase in your portfolio?
+            </p>
+
+            <p>
+                Sign up below and start applying to interesting projects!
+            </p>
         </div>
-        <div class="input-group margin-bottom-sm">
-          <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-          <input type='email' class="form-control signup-input" ng-model='user.email' placeholder='email'>
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-          <input class="form-control signup-input" type="password" ng-model='user.password' placeholder='password'>
-        </div>
-        <button class="btn btn-danger"><i class="fa fa fa-sign-in fa-lg"></i> signup</button>
-        <a class="login-link" href="#/login">Already a member? <strong>Login</strong></a>
-      </form>
     </div>
 
-    <div class="wrapper col-6-12 benefits">
-      <div class="card">
-        <h3>About <em>Procodo</em></h3>
-        <p>
-          Developers are always looking to build interesting and valuable products for showcase in their portfolio.
-        </p>
-        <p>
-          Non-profit organizations have limited resources for building interesting and valuable products that help the world.
-        </p>
-        <p>
-          <strong>Procodo</strong> <em>connects</em> developers looking to volunteer their coding experience with non-profits looking for talented <em><strong>pro codo</strong></em>&trade; help.
-        </p>
-        <div class="learn-more">
-          <a href="#/about" class="learn-more-btn">Learn More</a>
-        </div>
-      </div>
-    </div>
-  </div>
+    <div class="col-1-2">
+        <div class="np-cta card">
+            <h2>Non-Profits</h2>
+            <i class="fa fa-users fa-fw"></i>
 
-  <div class="wrapper col-1-1">
-    <div class="card footer">
-      <div class="home-left">
-        <a class="footer-link" href='#/'><i class="fa fa-home fa-fw"></i></a>
-      </div>
-      <div class="copy-right">
-        <h4><a class="copy-link" href="http://clarkfeusier.com" target="_blank">&copy; Clark Feusier 2015</a></h4>
-      </div>
+            <h1>get help changing the world</h1>
+
+            <p>
+                Do you have limited resources to build interesting and valuable products that help the world?
+            </p>
+
+            <p>
+                Get started by signing up below and posting a project!
+            </p>
+        </div>
     </div>
-  </div>
+
+    <div class="wrapper">
+        <div class="signup col-6-12">
+            <form name="signupForm" ng-submit='signup()' class="card signup-form-container">
+                <h3>Signup</h3>
+
+                <div class="form-control"><span class="input-group-addon"><i class="fa fa-wrench fa-fw"></i></span>
+                    <select class="signup-input" ng-model='user.uType' ng-options='opt as opt.label for opt in uTypes'>
+                    </select>
+                </div>
+                <div class="input-group margin-bottom-sm">
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                    <input type='email' class="form-control signup-input" ng-model='user.email' placeholder='email'>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                    <input class="form-control signup-input" type="password" ng-model='user.password'
+                           placeholder='password'>
+                </div>
+                <button class="btn btn-danger"><i class="fa fa fa-sign-in fa-lg"></i> signup</button>
+                <a class="login-link" href="#/login">Already a member? <strong>Login</strong></a>
+            </form>
+        </div>
+
+        <div class="wrapper col-6-12 benefits">
+            <div class="card">
+                <h3>About <em>Procodo</em></h3>
+
+                <p>
+                    Developers are always looking to build interesting and valuable products for showcase in their
+                    portfolio.
+                </p>
+
+                <p>
+                    Non-profit organizations have limited resources for building interesting and valuable products that
+                    help the world.
+                </p>
+
+                <p>
+                    <strong>Procodo</strong> <em>connects</em> developers looking to volunteer their coding experience
+                    with non-profits looking for talented <em><strong>pro codo</strong></em>&trade; help.
+                </p>
+
+                <div class="learn-more">
+                    <a href="#/about" class="learn-more-btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper col-1-1">
+        <div class="card footer">
+            <div class="home-left">
+                <a class="footer-link" href='#/'><i class="fa fa-home fa-fw"></i></a>
+            </div>
+            <div class="copy-right">
+                <h4><a class="copy-link" href="http://clarkfeusier.com" target="_blank">&copy; Clark Feusier 2015</a>
+                </h4>
+            </div>
+        </div>
+    </div>
 
 </div>

@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="Procodo">
-  <head>
-    <meta charset="utf-8" />
-    <title>Procodo | Developers + Nonprofits</title>
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Bitter|Open+Sans' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/assets/styles/styles.min.css" />
-    <script src="/lib/vendor.min.js"></script>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8"/>
+  <title>Procodo | Developers + Nonprofits</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Bitter|Open+Sans' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="/assets/styles/styles.min.css"/>
+  <script src="/lib/vendor.min.js"></script>
+</head>
+<body>
 
-    <div ng-controller="NavCtrl">
-      <div class="navigation">
-        <div class='invalid-navigation' ng-if='!isValid()'>
-          <ul>
-            <h2 class="navBrand"><a href='#/'><i class="fa fa-home fa-fw"></i><span class="navAnchor">Procodo</span></a></h2>
-            <li class='signup'><a href='#/signup'>signup</a></li>
-            <li><a href='#/login' class='login'>login</a></li>
-          </ul>
-        </div>
-        <div class='valid-navigation' ng-if='isValid()'>
-          <ul>
-            <h2 class="navBrand"><a href='#/'><i class="fa fa-home fa-fw"></i><span class="navAnchor">Procodo</span></a></h2>
-            <li><a href='#' class='logout' ng-click='logout()'>logout</a></li>
-            <li ng-if="isDev()"><a href='#/devs/dashboard' class='profile'>dashboard</a></li>
-            <li ng-if="isNp()"><a href='#/nps/dashboard' class='profile'>dashboard</a></li>
-            <li><a href='#/projects' class='projects'>projects</a></li>
-          </ul>
-        </div>
-      </div>
+<div ng-controller="NavCtrl">
+  <div class="navigation">
+    <div class='invalid-navigation' ng-if='!isValid()'>
+      <ul>
+        <h2 class="navBrand"><a href='#/'><i class="fa fa-home fa-fw"></i><span class="navAnchor">Procodo</span></a>
+        </h2>
+        <li class='signup'><a href='#/signup'>signup</a></li>
+        <li><a href='#/login' class='login'>login</a></li>
+      </ul>
     </div>
+    <div class='valid-navigation' ng-if='isValid()'>
+      <ul>
+        <h2 class="navBrand">
+          <a href='#/'><i class="fa fa-home fa-fw"></i><span class="navAnchor">Procodo</span></a>
+        </h2>
+        <li><a href='#' class='logout' ng-click='logout()'>logout</a></li>
+        <li ng-if="isDev()"><a href='#/devs/dashboard' class='profile'>dashboard</a></li>
+        <li ng-if="isNp()"><a href='#/nps/dashboard' class='profile'>dashboard</a></li>
+        <li><a href='#/projects' class='projects'>projects</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-    <div class="grid grid-pad" ng-view></div>
+<div class="grid grid-pad" ng-view></div>
 
-    <script src='/app/app.min.js'></script>
-  </body>
+<script src='/app/app.min.js'></script>
+</body>
 </html>

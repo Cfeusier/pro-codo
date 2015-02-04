@@ -49,6 +49,7 @@ body {
 .col-1-1 {
   width: 100%;
 }
+
 .col-2-3, .col-8-12 {
   width: 66.66%;
 }
@@ -119,8 +120,6 @@ body {
   width: 58.33%
 }
 
-
-
 /* Pushing blocks */
 
 .push-2-3, .push-8-12 {
@@ -171,7 +170,6 @@ body {
   margin-left: 8.33%
 }
 
-
 @media handheld, only screen and (max-width: 767px) {
   .grid {
     width: 100%;
@@ -193,9 +191,7 @@ body {
     padding-right: 10px; /* column-space */
   }
 
-
   /* Mobile Layout */
-
   [class*='mobile-col-'] {
     float: left;
     margin-left: 0px;
@@ -210,6 +206,7 @@ body {
   .mobile-col-1-1 {
     width: 100%;
   }
+
   .mobile-col-2-3, .mobile-col-8-12 {
     width: 66.66%;
   }
@@ -259,7 +256,6 @@ body {
   }
 
   /* Layout Columns */
-
   .mobile-col-11-12 {
     width: 91.66%
   }
@@ -313,7 +309,6 @@ body {
   color: #263238;
 }
 
-
 h4 {
   color: #263238;
 }
@@ -365,7 +360,6 @@ h1, h3 {
   color: #607D8B;
 }
 
-
 p, a, li {
   font-family: 'Open Sans', sans-serif;
 }
@@ -384,10 +378,10 @@ ul {
   padding: 10px;
   text-align: center;
   box-shadow: 3px 3px 3px gray;
-  background:#FFF;
-  border:1px solid #AAA;
-  margin:15px;
-  overflow:hidden;
+  background: #FFF;
+  border: 1px solid #AAA;
+  margin: 15px;
+  overflow: hidden;
 }
 
 .signup {
@@ -570,40 +564,40 @@ ul {
 }
 
 .login-marketing {
-    margin-top: 80px;
+  margin-top: 80px;
 }
 
 @media handheld, only screen and (max-width: 767px) {
-    .signup {
-        padding-right: 10px;
-    }
+  .signup {
+    padding-right: 10px;
+  }
 
-    .benefits {
-        padding-right: 10px;
-    }
+  .benefits {
+    padding-right: 10px;
+  }
 
-    .navigation li {
-        margin: 0 2.5px;
-    }
+  .navigation li {
+    margin: 0 2.5px;
+  }
 
-    .signup-input {
-        width: 70%;
-    }
+  .signup-input {
+    width: 70%;
+  }
 
-    .navigation h2 > a > span {
-        font-size: 18pt;
-    }
+  .navigation h2 > a > span {
+    font-size: 18pt;
+  }
 
-    .navigation > div > ul {
-        padding: 10px 5px;
-    }
+  .navigation > div > ul {
+    padding: 10px 5px;
+  }
 
-    .fa.fa-home.fa-fw {
-        display: none;
-    }
+  .fa.fa-home.fa-fw {
+    display: none;
+  }
 
-    .login-marketing {
-        margin-top: 20px;
-        margin-right: 10px;
-    }
+  .login-marketing {
+    margin-top: 20px;
+    margin-right: 10px;
+  }
 }
