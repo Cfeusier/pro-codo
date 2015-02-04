@@ -30,3 +30,6 @@ client/src/lib
 
 # Build
 client/public
+
+# Webstorm IDE
+.idea
