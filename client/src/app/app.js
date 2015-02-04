@@ -79,10 +79,7 @@ angular.module('Procodo', [
   var tokenize = {
     request: function(req) {
       var jwt = $window.localStorage.getItem('io.procodo');
-      if (jwt) {
-        // user is authed, send token with request
-        req.headers['x-access-token'] = jwt;
-      }
+      if (jwt) req.headers['x-access-token'] = jwt;
       req.headers['Allow-Control-Allow-Origin'] = '*';
       return req;
     }
