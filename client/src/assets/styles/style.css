@@ -37,7 +37,7 @@ body {
 .grid-pad {
   padding-top: 20px;
   padding-left: 20px; /* grid-space to left */
-  padding-right: 0px; /* grid-space to right: (grid-space-left - column-space) e.g. 20px-20px=0 */
+  padding-right: 0; /* grid-space to right: (grid-space-left - column-space) e.g. 20px-20px=0 */
 }
 
 .push-right {
@@ -180,6 +180,7 @@ body {
     padding-right: 10px; /* grid-space to right: (grid-space-left - column-space) e.g. 20px-10px=10px */
   }
 
+  /*noinspection ALL*/
   [class*='col-'] {
     width: auto;
     float: none;
@@ -194,10 +195,7 @@ body {
   /* Mobile Layout */
   [class*='mobile-col-'] {
     float: left;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 10px;
+    margin: 0 0 10px;
     padding-left: 0;
     padding-right: 10px; /* column-space */
     padding-bottom: 0;
@@ -374,7 +372,6 @@ ul {
 }
 
 .card {
-  background-color: #ECEFF1;
   padding: 10px;
   text-align: center;
   box-shadow: 3px 3px 3px gray;
@@ -428,8 +425,7 @@ ul {
 .copy-right {
   text-align: right;
   margin: 0;
-  padding: 0;
-  padding-top: 5px;
+  padding: 5px 0 0;
 }
 
 .home-left {
@@ -462,7 +458,6 @@ ul {
   background-color: #D7CCC8;
   border: 2px solid #607D8B;
   cursor: pointer;
-  cursor: hand;
   color: #607D8B;
 }
 
@@ -552,7 +547,6 @@ ul {
   background-color: #607D8B;
   color: #D7CCC8;
   cursor: pointer;
-  cursor: hand;
 }
 
 .create-profile {
@@ -567,6 +561,10 @@ ul {
   margin-top: 80px;
 }
 
+.project-view {
+  padding-right: 20px;
+}
+
 @media handheld, only screen and (max-width: 767px) {
   .signup {
     padding-right: 10px;
@@ -577,7 +575,7 @@ ul {
   }
 
   .navigation li {
-    margin: 0 2.5px;
+    margin: 0 3px;
   }
 
   .signup-input {
